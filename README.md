@@ -1,5 +1,6 @@
 # basic_cybersecurity_projects
 This repository contains basic projects related to cybersecurity which is made using python language.
+
 **encryption.py**
 This program serves as an introductory example for understanding encryption techniques and basic programming concepts within the realm of cybersecurity. It offers a hands-on approach to explore encryption and decryption processes.Encryption and decryption are vital for safeguarding sensitive information, preventing unauthorized access, ensuring privacy, and maintaining data integrity in digital communications, transactions, and storage systems, enhancing cybersecurity and protecting against threats such as data breaches, identity theft, and espionage.This Python program demonstrates a basic encryption and decryption process using a substitution cipher. It prompts users to input a message to encrypt or decrypt. During encryption, each character in the plaintext is substituted with a corresponding character from a shuffled key while decryption reverses this process.
 
