@@ -1,73 +1,77 @@
+import tkinter as tk
+from tkinter import messagebox
+
 hosts_file_path = r"C:\Windows\System32\Drivers\etc\hosts"
 
 def block_website(website):
-    # Open hosts file in read mode first
-    with open(hosts_file_path, 'r') as f:
-        content = f.read()
+    try:
+        with open(hosts_file_path, 'r') as f:
+            content = f.read()
 
-    # Check if the website is already blocked
-    if any(website in line for line in content.splitlines()):
-        print(f"{website} is already blocked.")
-    else:
-        # Open hosts file in append mode to add new entries
-        with open(hosts_file_path, 'a') as f:
-            f.write(f"127.0.0.1 {website}\n")
-        print(f"{website} has been blocked successfully.")
+        if any(website in line for line in content.splitlines()):
+            messagebox.showinfo("Already Blocked", f"{website} is already blocked.")
+        else:
+            with open(hosts_file_path, 'a') as f:
+                f.write(f"127.0.0.1 {website}\n")
+            messagebox.showinfo("Blocked Successfully", f"{website} has been blocked successfully.")
+
+    except Exception as e:
+        messagebox.showerror("Error", f"Error occurred: {str(e)}")
 
 def list_blocked_websites():
-    # Open hosts file and read each line to find blocked websites
-    with open(hosts_file_path, 'r') as f:
-        content = f.readlines()
+    try:
+        with open(hosts_file_path, 'r') as f:
+            content = f.readlines()
 
-    blocked_websites = []
-    for line in content:
-        if line.strip().startswith('127.0.0.1'):
-            blocked_websites.append(line.strip().split()[1])
+        blocked_websites = [line.strip().split()[1] for line in content if line.strip().startswith('127.0.0.1')]
 
-    if blocked_websites:
-        print("Currently blocked websites:")
-        for website in blocked_websites:
-            print(website)
-    else:
-        print("No websites are currently blocked.")
+        if blocked_websites:
+            messagebox.showinfo("Blocked Websites", "Currently blocked websites:\n" + "\n".join(blocked_websites))
+        else:
+            messagebox.showinfo("Blocked Websites", "No websites are currently blocked.")
+
+    except Exception as e:
+        messagebox.showerror("Error", f"Error occurred: {str(e)}")
 
 def unblock_website(website):
-    # Open hosts file in read mode first
-    with open(hosts_file_path, 'r') as f:
-        lines = f.readlines()
+    try:
+        with open(hosts_file_path, 'r') as f:
+            lines = f.readlines()
 
-    # Rewrite hosts file without the website to unblock
-    with open(hosts_file_path, 'w') as f:
-        for line in lines:
-            if not line.strip().startswith('127.0.0.1 ' + website):
-                f.write(line)
-    
-    print(f"{website} has been unblocked successfully.")
+        with open(hosts_file_path, 'w') as f:
+            for line in lines:
+                if not line.strip().startswith('127.0.0.1 ' + website):
+                    f.write(line)
+        
+        messagebox.showinfo("Unblocked Successfully", f"{website} has been unblocked successfully.")
 
-# Main loop to interact with user
-while True:
-    print("\nWhat would you like to do?")
-    print("1. Block a website")
-    print("2. List currently blocked websites")
-    print("3. Unblock a website")
-    print("4. Exit")
+    except Exception as e:
+        messagebox.showerror("Error", f"Error occurred: {str(e)}")
 
-    choice = input("Enter your choice (1/2/3/4): ")
+# Function to create the GUI
+def create_gui():
+    root = tk.Tk()
+    root.title("Website Blocker")
 
-    if choice == '1':
-        website_to_block = input("Enter the website you want to block (e.g., example.com): ")
-        block_website(website_to_block)
-    
-    elif choice == '2':
-        list_blocked_websites()
-    
-    elif choice == '3':
-        website_to_unblock = input("Enter the website you want to unblock: ")
-        unblock_website(website_to_unblock)
-    
-    elif choice == '4':
-        print("Exiting program.")
-        break
-    
-    else:
-        print("Invalid choice. Please enter 1, 2, 3, or 4.")
+    label = tk.Label(root, text="Choose an action:")
+    label.pack(pady=10)
+
+    button_block = tk.Button(root, text="Block Website", command=lambda: block_website(entry_website.get()))
+    button_block.pack(pady=5)
+
+    button_list = tk.Button(root, text="List Blocked Websites", command=list_blocked_websites)
+    button_list.pack(pady=5)
+
+    button_unblock = tk.Button(root, text="Unblock Website", command=lambda: unblock_website(entry_website.get()))
+    button_unblock.pack(pady=5)
+
+    label_website = tk.Label(root, text="Enter website (e.g., example.com):")
+    label_website.pack(pady=5)
+
+    entry_website = tk.Entry(root, width=30)
+    entry_website.pack(pady=5)
+
+    root.mainloop()
+
+# Start the GUI
+create_gui()

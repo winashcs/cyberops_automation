@@ -1,5 +1,6 @@
 import tkinter as tk
 import keyboard
+import os
 
 def record_keyboard():
     r = keyboard.record(until="escape")
@@ -8,7 +9,9 @@ def record_keyboard():
     save_to_file(x)
 
 def save_to_file(text):
-    with open("record.txt", 'a') as f:
+    script_dir = os.path.dirname(__file__)  # Absolute path of the script's directory
+    file_path = os.path.join(script_dir, "record.txt")
+    with open(file_path, 'a') as f:
         f.write(text + '\n')
 
 # Create the GUI window
@@ -25,3 +28,4 @@ exit_button.pack()
 
 # Start the GUI main loop
 root.mainloop()
+
