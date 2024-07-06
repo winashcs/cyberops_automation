@@ -38,7 +38,6 @@ random.shuffle(key)
 # Create the main tkinter window
 root = tk.Tk()
 root.title("Encryption-Decryption")
-root.iconbitmap('images/icon_ed.ico')
 
 # Create GUI elements
 label_message = tk.Label(root, text="Enter message:")
