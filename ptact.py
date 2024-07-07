@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 import string
 import random
 import pyperclip
@@ -37,10 +37,10 @@ class KeyboardRecorder:
         self.root = root
         self.root.title("Keyboard Recorder")
 
-        self.record_button = tk.Button(self.root, text="Start Recording", command=self.start_recording)
+        self.record_button = ttk.Button(self.root, text="Start Recording", command=self.start_recording)
         self.record_button.pack(pady=20)
 
-        self.exit_button = tk.Button(self.root, text="Exit", command=self.exit_application)
+        self.exit_button = ttk.Button(self.root, text="Exit", command=self.exit_application)
         self.exit_button.pack()
 
         self.recording = False
@@ -219,10 +219,10 @@ class MainApplication:
         self.root = root
         self.root.title("Main Menu")
 
-        self.label = tk.Label(root, text="Select an Option:")
+        self.label = ttk.Label(root, text="Select an Option:")
         self.label.pack(pady=10)
 
-        self.menu = tk.OptionMenu(root, tk.StringVar(), *[
+        options = [
             "Encryption/Decryption",
             "Keylogger",
             "Mouse Pointer Malware",
@@ -230,13 +230,18 @@ class MainApplication:
             "Password Validator",
             "Screen Rotating Malware",
             "Website Blocker"
-        ], command=self.menu_option_selected)
+        ]
+        self.selected_option = tk.StringVar()
+        self.menu = ttk.Combobox(root, textvariable=self.selected_option, values=options, state="readonly", width=30)
         self.menu.pack()
 
-        self.switch_button = tk.Button(root, text="Switch Functionality", state=tk.DISABLED, command=self.switch_functionality)
+        self.menu.bind("<<ComboboxSelected>>", self.menu_option_selected)
+
+        self.switch_button = ttk.Button(root, text="Switch Functionality", state=tk.DISABLED, command=self.switch_functionality)
         self.switch_button.pack(pady=10)
 
-    def menu_option_selected(self, selection):
+    def menu_option_selected(self, event=None):
+        selection = self.selected_option.get()
         self.switch_button.config(state=tk.NORMAL)
         if selection == "Encryption/Decryption":
             self.setup_encryption_decryption()
@@ -267,26 +272,26 @@ class MainApplication:
         key = c.copy()
         random.shuffle(key)
 
-        frame = tk.Frame(self.root)
-        frame.pack()
+        frame = ttk.Frame(self.root)
+        frame.pack(pady=20, padx=10)
 
-        label_message = tk.Label(frame, text="Enter message:")
-        label_message.pack()
+        label_message = ttk.Label(frame, text="Enter message:")
+        label_message.grid(row=0, column=0, padx=5, pady=5)
 
-        entry_message = tk.Entry(frame, width=50)
-        entry_message.pack()
+        entry_message = ttk.Entry(frame, width=50)
+        entry_message.grid(row=0, column=1, padx=5, pady=5)
 
-        button_encrypt = tk.Button(frame, text="Encrypt", command=encrypt_message)
-        button_encrypt.pack()
+        button_encrypt = ttk.Button(frame, text="Encrypt", command=encrypt_message)
+        button_encrypt.grid(row=1, column=0, padx=5, pady=5)
 
-        button_decrypt = tk.Button(frame, text="Decrypt", command=decrypt_message)
-        button_decrypt.pack()
+        button_decrypt = ttk.Button(frame, text="Decrypt", command=decrypt_message)
+        button_decrypt.grid(row=1, column=1, padx=5, pady=5)
 
-        label_encrypted = tk.Label(frame, text="")
-        label_encrypted.pack()
+        label_encrypted = ttk.Label(frame, text="")
+        label_encrypted.grid(row=2, columnspan=2, padx=5, pady=5)
 
-        button_copy = tk.Button(frame, text="Copy", command=copy_message)
-        button_copy.pack()
+        button_copy = ttk.Button(frame, text="Copy", command=copy_message)
+        button_copy.grid(row=3, columnspan=2, padx=5, pady=5)
 
     def setup_keylogger(self):
         root = tk.Tk()
@@ -294,87 +299,87 @@ class MainApplication:
         root.mainloop()
 
     def setup_mouse_pointer_malware(self):
-        frame = tk.Frame(self.root)
-        frame.pack()
+        frame = ttk.Frame(self.root)
+        frame.pack(pady=20, padx=10)
 
-        label_iterations = tk.Label(frame, text="Enter number of iterations:")
-        label_iterations.pack()
+        label_iterations = ttk.Label(frame, text="Enter number of iterations:")
+        label_iterations.grid(row=0, column=0, padx=5, pady=5)
 
-        entry_iterations = tk.Entry(frame, width=20)
-        entry_iterations.pack()
+        entry_iterations = ttk.Entry(frame, width=20)
+        entry_iterations.grid(row=0, column=1, padx=5, pady=5)
 
-        button_start = tk.Button(frame, text="Start", command=lambda: perform_random_actions(entry_iterations.get()))
-        button_start.pack()
+        button_start = ttk.Button(frame, text="Start", command=lambda: perform_random_actions(entry_iterations.get()))
+        button_start.grid(row=1, columnspan=2, padx=5, pady=5)
 
     def setup_password_generator(self):
-        frame = tk.Frame(self.root)
-        frame.pack()
+        frame = ttk.Frame(self.root)
+        frame.pack(pady=20, padx=10)
 
-        label_length = tk.Label(frame, text="Enter password length:")
-        label_length.pack()
+        label_length = ttk.Label(frame, text="Enter password length:")
+        label_length.grid(row=0, column=0, padx=5, pady=5)
 
         global entry_length, password_display, copy_button
 
-        entry_length = tk.Entry(frame, width=20)
-        entry_length.pack()
+        entry_length = ttk.Entry(frame, width=20)
+        entry_length.grid(row=0, column=1, padx=5, pady=5)
 
-        button_generate = tk.Button(frame, text="Generate Password", command=generate_password_button)
-        button_generate.pack()
+        button_generate = ttk.Button(frame, text="Generate Password", command=generate_password_button)
+        button_generate.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
-        password_display = tk.Label(frame, text="")
-        password_display.pack()
+        password_display = ttk.Label(frame, text="")
+        password_display.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
 
-        copy_button = tk.Button(frame, text="Copy Password", command=copy_to_clipboard, state=tk.DISABLED)
-        copy_button.pack()
+        copy_button = ttk.Button(frame, text="Copy Password", command=copy_to_clipboard, state=tk.DISABLED)
+        copy_button.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
 
     def setup_password_validator(self):
-        frame = tk.Frame(self.root)
-        frame.pack()
+        frame = ttk.Frame(self.root)
+        frame.pack(pady=20, padx=10)
 
-        label_password = tk.Label(frame, text="Enter your password:")
-        label_password.pack()
+        label_password = ttk.Label(frame, text="Enter your password:")
+        label_password.grid(row=0, column=0, padx=5, pady=5)
 
         global entry_password
-        entry_password = tk.Entry(frame, show="*")
-        entry_password.pack()
+        entry_password = ttk.Entry(frame, show="*")
+        entry_password.grid(row=0, column=1, padx=5, pady=5)
 
-        button_validate = tk.Button(frame, text="Validate Password", command=validate_password)
-        button_validate.pack()
+        button_validate = ttk.Button(frame, text="Validate Password", command=validate_password)
+        button_validate.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
     def setup_screen_rotating_malware(self):
-        frame = tk.Frame(self.root)
-        frame.pack()
+        frame = ttk.Frame(self.root)
+        frame.pack(pady=20, padx=10)
 
-        label_rotations = tk.Label(frame, text="Enter number of rotations:")
-        label_rotations.pack()
+        label_rotations = ttk.Label(frame, text="Enter number of rotations:")
+        label_rotations.grid(row=0, column=0, padx=5, pady=5)
 
         global entry_rotations
 
-        entry_rotations = tk.Entry(frame, width=20)
-        entry_rotations.pack()
+        entry_rotations = ttk.Entry(frame, width=20)
+        entry_rotations.grid(row=0, column=1, padx=5, pady=5)
 
-        button_rotate = tk.Button(frame, text="Rotate Screen", command=lambda: perform_screen_rotations(int(entry_rotations.get())))
-        button_rotate.pack()
+        button_rotate = ttk.Button(frame, text="Rotate Screen", command=lambda: perform_screen_rotations(int(entry_rotations.get())))
+        button_rotate.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
     def setup_website_blocker(self):
-        frame = tk.Frame(self.root)
-        frame.pack()
+        frame = ttk.Frame(self.root)
+        frame.pack(pady=20, padx=10)
 
-        label_website = tk.Label(frame, text="Enter website (e.g., example.com):")
-        label_website.pack()
+        label_website = ttk.Label(frame, text="Enter website (e.g., example.com):")
+        label_website.grid(row=0, column=0, padx=5, pady=5)
 
         global entry_website
-        entry_website = tk.Entry(frame, width=30)
-        entry_website.pack()
+        entry_website = ttk.Entry(frame, width=30)
+        entry_website.grid(row=0, column=1, padx=5, pady=5)
 
-        button_block = tk.Button(frame, text="Block Website", command=lambda: block_website(entry_website.get()))
-        button_block.pack()
+        button_block = ttk.Button(frame, text="Block Website", command=lambda: block_website(entry_website.get()))
+        button_block.grid(row=1, column=0, padx=5, pady=5)
 
-        button_list = tk.Button(frame, text="List Blocked Websites", command=list_blocked_websites)
-        button_list.pack()
+        button_list = ttk.Button(frame, text="List Blocked Websites", command=list_blocked_websites)
+        button_list.grid(row=1, column=1, padx=5, pady=5)
 
-        button_unblock = tk.Button(frame, text="Unblock Website", command=lambda: unblock_website(entry_website.get()))
-        button_unblock.pack()
+        button_unblock = ttk.Button(frame, text="Unblock Website", command=lambda: unblock_website(entry_website.get()))
+        button_unblock.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
 
 # Main Program Execution
 if __name__ == "__main__":
