@@ -2,6 +2,7 @@ import random
 import string
 import tkinter as tk
 from tkinter import messagebox
+import pyperclip
 
 def generate_password(length):
     characters = string.ascii_letters + string.digits + string.punctuation
@@ -14,9 +15,15 @@ def generate_password_button():
         if length <= 0:
             raise ValueError("Length must be a positive integer.")
         password = generate_password(length)
-        messagebox.showinfo("Generated Password", f"Generated Password:\n{password}")
+        password_display.config(text=f"Generated Password:\n{password}")
+        copy_button.config(state=tk.NORMAL)  # Enable copy button
     except ValueError as e:
         messagebox.showerror("Error", str(e))
+
+def copy_to_clipboard():
+    password = password_display.cget("text").split('\n')[1]  # Extract the password
+    pyperclip.copy(password)
+    messagebox.showinfo("Copied", "Password copied to clipboard!")
 
 root = tk.Tk()
 root.title("Random Password Generator")
@@ -30,4 +37,11 @@ entry_length.pack(pady=5)
 button_generate = tk.Button(root, text="Generate Password", command=generate_password_button)
 button_generate.pack(pady=10)
 
+password_display = tk.Label(root, text="")
+password_display.pack(pady=10)
+
+copy_button = tk.Button(root, text="Copy Password", command=copy_to_clipboard, state=tk.DISABLED)
+copy_button.pack(pady=10)
+
 root.mainloop()
+
