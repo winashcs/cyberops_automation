@@ -219,6 +219,10 @@ class MainApplication:
         self.root = root
         self.root.title("Main Menu")
 
+        # Centered Heading
+        heading = ttk.Label(root, text="Python To Automate Cybersecurity Tasks", font=('Arial', 16, 'bold'))
+        heading.pack(pady=10)
+
         self.label = ttk.Label(root, text="Select an Option:")
         self.label.pack(pady=10)
 
