@@ -9,7 +9,7 @@ import rotatescreen
 import time
 
 # Encryption and Decryption Functions
-def encrypt_message():
+def encrypt_message(entry_message, label_encrypted):
     plain_text = entry_message.get()
     cipher_text = ""
     for l in plain_text:
@@ -17,7 +17,7 @@ def encrypt_message():
         cipher_text += key[index]
     label_encrypted.config(text="Encrypted message: " + cipher_text)
 
-def decrypt_message():
+def decrypt_message(entry_message, label_encrypted):
     cipher_text = entry_message.get()
     plain_text = ""
     for l in cipher_text:
@@ -25,7 +25,7 @@ def decrypt_message():
         plain_text += c[index]
     label_encrypted.config(text="Decrypted message: " + plain_text)
 
-def copy_message():
+def copy_message(label_encrypted):
     message_to_copy = label_encrypted.cget("text")
     message_to_copy = message_to_copy.split(": ")[1]  # Get the actual message part
     pyperclip.copy(message_to_copy)
@@ -98,7 +98,7 @@ def generate_password(length):
     password = ''.join(random.choice(characters) for _ in range(length))
     return password
 
-def generate_password_button():
+def generate_password_button(entry_length, password_display, copy_button):
     try:
         length = int(entry_length.get())
         if length <= 0:
@@ -109,7 +109,7 @@ def generate_password_button():
     except ValueError as e:
         messagebox.showerror("Error", str(e))
 
-def copy_to_clipboard():
+def copy_to_clipboard(password_display):
     password = password_display.cget("text").split('\n')[1]
     pyperclip.copy(password)
     messagebox.showinfo("Copied", "Password copied to clipboard!")
@@ -150,7 +150,7 @@ def pv(password):
     else:
         return "Password successful"
 
-def validate_password():
+def validate_password(entry_password):
     password = entry_password.get()
     validation_result = pv(password)
     messagebox.showinfo("Password Validation Result", validation_result)
@@ -217,7 +217,7 @@ def unblock_website(website):
 class MainApplication:
     def __init__(self, root):
         self.root = root
-        self.root.title("Main Menu")
+        self.root.title("Select an Option")
 
         # Centered Heading
         heading = ttk.Label(root, text="Python To Automate Cybersecurity Tasks", font=('Arial', 16, 'bold'))
@@ -241,12 +241,8 @@ class MainApplication:
 
         self.menu.bind("<<ComboboxSelected>>", self.menu_option_selected)
 
-        self.switch_button = ttk.Button(root, text="Switch Functionality", state=tk.DISABLED, command=self.switch_functionality)
-        self.switch_button.pack(pady=10)
-
     def menu_option_selected(self, event=None):
         selection = self.selected_option.get()
-        self.switch_button.config(state=tk.NORMAL)
         if selection == "Encryption/Decryption":
             self.setup_encryption_decryption()
         elif selection == "Keylogger":
@@ -262,21 +258,18 @@ class MainApplication:
         elif selection == "Website Blocker":
             self.setup_website_blocker()
 
-    def switch_functionality(self):
-        self.root.destroy()
-        new_root = tk.Tk()
-        new_app = MainApplication(new_root)
-        new_root.mainloop()
-
     def setup_encryption_decryption(self):
-        global c, key, entry_message, label_encrypted
+        global c, key
 
         c = string.digits + string.ascii_letters + string.punctuation + " "
         c = list(c)
         key = c.copy()
         random.shuffle(key)
 
-        frame = ttk.Frame(self.root)
+        new_window = tk.Toplevel(self.root)
+        new_window.title("Encryption/Decryption")
+
+        frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
 
         label_message = ttk.Label(frame, text="Enter message:")
@@ -285,25 +278,27 @@ class MainApplication:
         entry_message = ttk.Entry(frame, width=50)
         entry_message.grid(row=0, column=1, padx=5, pady=5)
 
-        button_encrypt = ttk.Button(frame, text="Encrypt", command=encrypt_message)
+        button_encrypt = ttk.Button(frame, text="Encrypt", command=lambda: encrypt_message(entry_message, label_encrypted))
         button_encrypt.grid(row=1, column=0, padx=5, pady=5)
 
-        button_decrypt = ttk.Button(frame, text="Decrypt", command=decrypt_message)
+        button_decrypt = ttk.Button(frame, text="Decrypt", command=lambda: decrypt_message(entry_message, label_encrypted))
         button_decrypt.grid(row=1, column=1, padx=5, pady=5)
 
         label_encrypted = ttk.Label(frame, text="")
         label_encrypted.grid(row=2, columnspan=2, padx=5, pady=5)
 
-        button_copy = ttk.Button(frame, text="Copy", command=copy_message)
+        button_copy = ttk.Button(frame, text="Copy", command=lambda: copy_message(label_encrypted))
         button_copy.grid(row=3, columnspan=2, padx=5, pady=5)
 
     def setup_keylogger(self):
-        root = tk.Tk()
+        root = tk.Toplevel(self.root)
         app = KeyboardRecorder(root)
-        root.mainloop()
 
     def setup_mouse_pointer_malware(self):
-        frame = ttk.Frame(self.root)
+        new_window = tk.Toplevel(self.root)
+        new_window.title("Mouse Pointer Malware")
+
+        frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
 
         label_iterations = ttk.Label(frame, text="Enter number of iterations:")
@@ -313,51 +308,55 @@ class MainApplication:
         entry_iterations.grid(row=0, column=1, padx=5, pady=5)
 
         button_start = ttk.Button(frame, text="Start", command=lambda: perform_random_actions(entry_iterations.get()))
-        button_start.grid(row=1, columnspan=2, padx=5, pady=5)
+        button_start.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
     def setup_password_generator(self):
-        frame = ttk.Frame(self.root)
+        new_window = tk.Toplevel(self.root)
+        new_window.title("Password Generator")
+
+        frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
 
         label_length = ttk.Label(frame, text="Enter password length:")
         label_length.grid(row=0, column=0, padx=5, pady=5)
 
-        global entry_length, password_display, copy_button
-
         entry_length = ttk.Entry(frame, width=20)
         entry_length.grid(row=0, column=1, padx=5, pady=5)
 
-        button_generate = ttk.Button(frame, text="Generate Password", command=generate_password_button)
+        button_generate = ttk.Button(frame, text="Generate Password", command=lambda: generate_password_button(entry_length, password_display, copy_button))
         button_generate.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
         password_display = ttk.Label(frame, text="")
         password_display.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
 
-        copy_button = ttk.Button(frame, text="Copy Password", command=copy_to_clipboard, state=tk.DISABLED)
+        copy_button = ttk.Button(frame, text="Copy Password", command=lambda: copy_to_clipboard(password_display), state=tk.DISABLED)
         copy_button.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
 
     def setup_password_validator(self):
-        frame = ttk.Frame(self.root)
+        new_window = tk.Toplevel(self.root)
+        new_window.title("Password Validator")
+
+        frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
 
         label_password = ttk.Label(frame, text="Enter your password:")
         label_password.grid(row=0, column=0, padx=5, pady=5)
 
-        global entry_password
         entry_password = ttk.Entry(frame, show="*")
         entry_password.grid(row=0, column=1, padx=5, pady=5)
 
-        button_validate = ttk.Button(frame, text="Validate Password", command=validate_password)
+        button_validate = ttk.Button(frame, text="Validate Password", command=lambda: validate_password(entry_password))
         button_validate.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
     def setup_screen_rotating_malware(self):
-        frame = ttk.Frame(self.root)
+        new_window = tk.Toplevel(self.root)
+        new_window.title("Screen Rotating Malware")
+
+        frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
 
         label_rotations = ttk.Label(frame, text="Enter number of rotations:")
         label_rotations.grid(row=0, column=0, padx=5, pady=5)
-
-        global entry_rotations
 
         entry_rotations = ttk.Entry(frame, width=20)
         entry_rotations.grid(row=0, column=1, padx=5, pady=5)
@@ -366,13 +365,15 @@ class MainApplication:
         button_rotate.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
     def setup_website_blocker(self):
-        frame = ttk.Frame(self.root)
+        new_window = tk.Toplevel(self.root)
+        new_window.title("Website Blocker")
+
+        frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
 
         label_website = ttk.Label(frame, text="Enter website (e.g., example.com):")
         label_website.grid(row=0, column=0, padx=5, pady=5)
 
-        global entry_website
         entry_website = ttk.Entry(frame, width=30)
         entry_website.grid(row=0, column=1, padx=5, pady=5)
 
@@ -390,3 +391,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = MainApplication(root)
     root.mainloop()
+
