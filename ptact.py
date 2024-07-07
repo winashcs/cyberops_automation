@@ -87,8 +87,8 @@ def perform_random_actions(num_iterations):
         return
 
     for _ in range(num_iterations):
-        h = random.randint(0, 1080)
-        w = random.randint(0, 1920)
+        h = random.randint(0, 768)
+        w = random.randint(0, 1366)
         pyautogui.click(w, h, duration=0.3)
         pyautogui.hotkey('winleft', 'm')
 
@@ -218,6 +218,7 @@ class MainApplication:
     def __init__(self, root):
         self.root = root
         self.root.title("Select an Option")
+        self.root.geometry("1366x768")  # Set main window size
 
         # Centered Heading
         heading = ttk.Label(root, text="Python To Automate Cybersecurity Tasks", font=('Arial', 16, 'bold'))
@@ -268,6 +269,7 @@ class MainApplication:
 
         new_window = tk.Toplevel(self.root)
         new_window.title("Encryption/Decryption")
+        new_window.geometry("1366x768")  # Set window size
 
         frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
@@ -275,7 +277,7 @@ class MainApplication:
         label_message = ttk.Label(frame, text="Enter message:")
         label_message.grid(row=0, column=0, padx=5, pady=5)
 
-        entry_message = ttk.Entry(frame, width=50)
+        entry_message = ttk.Entry(frame, width=30)
         entry_message.grid(row=0, column=1, padx=5, pady=5)
 
         button_encrypt = ttk.Button(frame, text="Encrypt", command=lambda: encrypt_message(entry_message, label_encrypted))
@@ -297,6 +299,7 @@ class MainApplication:
     def setup_mouse_pointer_malware(self):
         new_window = tk.Toplevel(self.root)
         new_window.title("Mouse Pointer Malware")
+        new_window.geometry("1366x768")  # Set window size
 
         frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
@@ -313,6 +316,7 @@ class MainApplication:
     def setup_password_generator(self):
         new_window = tk.Toplevel(self.root)
         new_window.title("Password Generator")
+        new_window.geometry("1366x768")  # Set window size
 
         frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
@@ -335,6 +339,7 @@ class MainApplication:
     def setup_password_validator(self):
         new_window = tk.Toplevel(self.root)
         new_window.title("Password Validator")
+        new_window.geometry("1366x768")  # Set window size
 
         frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
@@ -351,6 +356,7 @@ class MainApplication:
     def setup_screen_rotating_malware(self):
         new_window = tk.Toplevel(self.root)
         new_window.title("Screen Rotating Malware")
+        new_window.geometry("1366x768")  # Set window size
 
         frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
@@ -367,6 +373,7 @@ class MainApplication:
     def setup_website_blocker(self):
         new_window = tk.Toplevel(self.root)
         new_window.title("Website Blocker")
+        new_window.geometry("1366x768")  # Set window size
 
         frame = ttk.Frame(new_window)
         frame.pack(pady=20, padx=10)
