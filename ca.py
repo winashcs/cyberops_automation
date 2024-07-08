@@ -34,7 +34,7 @@ class CA:
         frame2.place(x=0, y=326, width=1366, height=379)
         
         # Frame for function selection
-        frame2_1 = LabelFrame(frame2, bd=2, relief=RIDGE,bg='black')
+        frame2_1 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='black')
         frame2_1.place(x=0, y=12, width=680, height=350)
         
         sl1=Image.open('images/logo.png')
@@ -43,9 +43,9 @@ class CA:
         self.sl111=Label(frame2_1,image=self.sl11,bg='black')
         self.sl111.grid(row=0, column=0, padx=10, pady=5, sticky='w') 
         
-       # Label for function selection
-        label_function = Label(frame2_1, text="Select   ▶", font=('Arial',17,'bold'), bg='black',fg='#fec101')
-        label_function.grid(row=0, column=1, padx=10, pady=5,sticky='e')
+        # Label for function selection
+        label_function = Label(frame2_1, text="Select   ▶", font=('Arial',17,'bold'), bg='black', fg='#fec101')
+        label_function.grid(row=0, column=1, padx=10, pady=5, sticky='e')
         
         # Function selection combo box
         self.function_selection = ttk.Combobox(frame2_1, values=[
@@ -119,6 +119,15 @@ class CA:
         self.encrypt_frame = Frame(self.frame2_2, bg='white')
         self.encrypt_frame.pack()
         
+        # Image for Encrypt Message
+        image_encrypt = Image.open('images/1.jpg')
+        image_encrypt = image_encrypt.resize((200, 200), Image.LANCZOS)
+        photo_encrypt = ImageTk.PhotoImage(image_encrypt)
+        label_image_encrypt = Label(self.encrypt_frame, image=photo_encrypt, bg='white')
+        label_image_encrypt.image = photo_encrypt
+        label_image_encrypt.pack(side=LEFT, padx=20)
+        
+        # Function details for Encrypt Message
         label_message = Label(self.encrypt_frame, text="Enter message:")
         label_message.pack()
         
@@ -161,6 +170,15 @@ class CA:
         self.decrypt_frame = Frame(self.frame2_2, bg='white')
         self.decrypt_frame.pack()
         
+        # Image for Decrypt Message
+        image_decrypt = Image.open('images/1.jpg')
+        image_decrypt = image_decrypt.resize((200, 200), Image.LANCZOS)
+        photo_decrypt = ImageTk.PhotoImage(image_decrypt)
+        label_image_decrypt = Label(self.decrypt_frame, image=photo_decrypt, bg='white')
+        label_image_decrypt.image = photo_decrypt
+        label_image_decrypt.pack(side=LEFT, padx=20)
+        
+        # Function details for Decrypt Message
         label_message = Label(self.decrypt_frame, text="Enter message:")
         label_message.pack()
         
@@ -181,6 +199,15 @@ class CA:
         self.keyboard_recorder = Frame(self.frame2_2, bg='white')
         self.keyboard_recorder.pack()
         
+        # Image for Keyboard Recorder
+        image_keyboard = Image.open('images/2.jpg')
+        image_keyboard = image_keyboard.resize((200, 200), Image.LANCZOS)
+        photo_keyboard = ImageTk.PhotoImage(image_keyboard)
+        label_image_keyboard = Label(self.keyboard_recorder, image=photo_keyboard, bg='white')
+        label_image_keyboard.image = photo_keyboard
+        label_image_keyboard.pack(side=LEFT, padx=20)
+        
+        # Function details for Keyboard Recorder
         self.record_button = Button(self.keyboard_recorder, text="Start Recording", command=self.start_recording)
         self.record_button.pack(pady=20)
         
@@ -225,6 +252,15 @@ class CA:
         self.random_actions = Frame(self.frame2_2, bg='white')
         self.random_actions.pack()
         
+        # Image for Random Clicks
+        image_random = Image.open('images/3.jpg')
+        image_random = image_random.resize((200, 200), Image.LANCZOS)
+        photo_random = ImageTk.PhotoImage(image_random)
+        label_image_random = Label(self.random_actions, image=photo_random, bg='white')
+        label_image_random.image = photo_random
+        label_image_random.pack(side=LEFT, padx=20)
+        
+        # Function details for Random Clicks
         label_iterations = Label(self.random_actions, text="Enter the number of iterations:")
         label_iterations.pack(pady=10)
         
@@ -261,6 +297,15 @@ class CA:
         self.password_generator = Frame(self.frame2_2, bg='white')
         self.password_generator.pack()
         
+        # Image for Password Generator
+        image_password = Image.open('images/4.jpg')
+        image_password = image_password.resize((200, 200), Image.LANCZOS)
+        photo_password = ImageTk.PhotoImage(image_password)
+        label_image_password = Label(self.password_generator, image=photo_password, bg='white')
+        label_image_password.image = photo_password
+        label_image_password.pack(side=LEFT, padx=20)
+        
+        # Function details for Password Generator
         label_length = Label(self.password_generator, text="Enter password length:")
         label_length.pack(pady=10)
         
@@ -302,6 +347,15 @@ class CA:
         self.password_validator = Frame(self.frame2_2, bg='white')
         self.password_validator.pack()
         
+        # Image for Password Validator
+        image_validator = Image.open('images/5.jpg')
+        image_validator = image_validator.resize((200, 200), Image.LANCZOS)
+        photo_validator = ImageTk.PhotoImage(image_validator)
+        label_image_validator = Label(self.password_validator, image=photo_validator, bg='white')
+        label_image_validator.image = photo_validator
+        label_image_validator.pack(side=LEFT, padx=20)
+        
+        # Function details for Password Validator
         label_password = Label(self.password_validator, text="Enter your password:")
         label_password.pack(pady=10)
         
@@ -356,6 +410,15 @@ class CA:
         self.screen_rotation = Frame(self.frame2_2, bg='white')
         self.screen_rotation.pack()
         
+        # Image for Screen Rotation
+        image_rotation = Image.open('images/6.jpg')
+        image_rotation = image_rotation.resize((200, 200), Image.LANCZOS)
+        photo_rotation = ImageTk.PhotoImage(image_rotation)
+        label_image_rotation = Label(self.screen_rotation, image=photo_rotation, bg='white')
+        label_image_rotation.image = photo_rotation
+        label_image_rotation.pack(side=LEFT, padx=20)
+        
+        # Function details for Screen Rotation
         label_rotations = Label(self.screen_rotation, text="Enter the number of rotations:")
         label_rotations.pack(pady=10)
         
@@ -391,6 +454,15 @@ class CA:
         self.website_blocker = Frame(self.frame2_2, bg='white')
         self.website_blocker.pack()
         
+        # Image for Website Blocker
+        image_website = Image.open('images/7.jpg')
+        image_website = image_website.resize((200, 200), Image.LANCZOS)
+        photo_website = ImageTk.PhotoImage(image_website)
+        label_image_website = Label(self.website_blocker, image=photo_website, bg='white')
+        label_image_website.image = photo_website
+        label_image_website.pack(side=LEFT, padx=20)
+        
+        # Function details for Website Blocker
         label_website = Label(self.website_blocker, text="Enter website (e.g., example.com):")
         label_website.pack(pady=10)
         
