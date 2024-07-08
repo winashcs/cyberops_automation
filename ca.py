@@ -10,7 +10,7 @@ import time
 import rotatescreen
 
 # Define the path to the hosts file on Windows
-hosts_file_path = r'C:\Windows\System32\drivers\etc\hosts'
+hosts_file_path = r'C:/Windows/System32/drivers/etc/hosts'
 
 class CA:
     def __init__(self, root):
