@@ -38,6 +38,11 @@ class CA:
         frame2_1.place(x=0, y=12, width=680, height=350)
         
         # Function selection buttons
+        sl1=Image.open('images/logo.png')
+        sl1=sl1.resize((100,100), Image.LANCZOS)
+        self.sl11=ImageTk.PhotoImage(sl1)
+        self.sl111=Label(frame2_1,image=self.sl11)
+        self.sl111.place(x=0,y=0,width=100,height=100)  
         button_encrypt = Button(frame2_1, text="Encrypt Message", command=self.select_encrypt)
         button_encrypt.pack(pady=5)
         
