@@ -41,10 +41,10 @@ class CA: #i used CA here to represent CyberOps Automation
                 label.place_configure(x=1366) 
                 self.image_objects[idx] = (label, photo, 1366)  
         self.root.after(25, self.animate)         
-
-        #creating selection interface for the user to select from various options   
+ 
         frame2=Frame(self.root,bd=2,relief=RIDGE,bg='white')
-        frame2.place(x=0,y=326,width=1366,height=379)   
+        frame2.place(x=0,y=326,width=1366,height=379)  
+        #creating selection interface for the user to select from various options   
         frame2_1=LabelFrame(frame2,bd=2,relief=RIDGE,bg='white')
         frame2_1.place(x=0,y=12,width=680,height=350)    
         
