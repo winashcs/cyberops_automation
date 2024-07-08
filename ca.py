@@ -68,6 +68,10 @@ class CA:
         # Frame for function display
         self.frame2_2 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='white')
         self.frame2_2.place(x=683, y=12, width=680, height=350)
+        
+        self.c = list(string.digits + string.ascii_letters + string.punctuation + " ")
+        self.key = self.c.copy()
+        random.shuffle(self.key)
     
     def load_images(self):
         self.image_objects = []
