@@ -34,18 +34,18 @@ class CA:
         frame2.place(x=0, y=326, width=1366, height=379)
         
         # Frame for function selection
-        frame2_1 = LabelFrame(frame2, bd=2, relief=RIDGE,bg='white')
+        frame2_1 = LabelFrame(frame2, bd=2, relief=RIDGE,bg='black')
         frame2_1.place(x=0, y=12, width=680, height=350)
         
         sl1=Image.open('images/logo.png')
-        sl1=sl1.resize((250,250), Image.LANCZOS)
+        sl1=sl1.resize((350,350), Image.LANCZOS)
         self.sl11=ImageTk.PhotoImage(sl1)
-        self.sl111=Label(frame2_1,image=self.sl11)
-        self.sl111.place(relx=0.5, rely=0.5,anchor=CENTER)  
+        self.sl111=Label(frame2_1,image=self.sl11,bg='black')
+        self.sl111.grid(row=0, column=0, padx=10, pady=5, sticky='w') 
         
        # Label for function selection
-        label_function = Label(frame2_1, text="Select : ", font=('Arial', 12), bg='white')
-        label_function.grid(row=0, column=0, padx=10, pady=5,sticky='e')
+        label_function = Label(frame2_1, text="Select   ▶ ", font=('Arial',17,'bold'), bg='black',fg='white')
+        label_function.grid(row=0, column=1, padx=10, pady=5,sticky='e')
         
         # Function selection combo box
         self.function_selection = ttk.Combobox(frame2_1, values=[
@@ -57,11 +57,12 @@ class CA:
             "Password Validator",
             "Screen Rotation",
             "Website Blocker"
-        ], state="readonly")
-        self.function_selection.grid(row=0, column=1, padx=10, pady=5, sticky='w')
+        ], state="readonly", font=('Arial', 9))
+        self.function_selection.grid(row=0, column=2, padx=10, pady=5, sticky='w')
         self.function_selection.bind("<<ComboboxSelected>>", self.select_function)
         frame2_1.grid_columnconfigure(0, weight=1) 
         frame2_1.grid_columnconfigure(1, weight=1)
+        frame2_1.grid_columnconfigure(2, weight=1)
         frame2_1.grid_rowconfigure(0, weight=1) 
         
         # Frame for function display
