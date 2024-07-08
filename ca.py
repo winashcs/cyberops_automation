@@ -37,6 +37,10 @@ class CA:
         frame2_1 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='white')
         frame2_1.place(x=0, y=12, width=680, height=350)
         
+       # Label for function selection
+        label_function = Label(frame2_1, text="Select :", font=('Arial', 12), bg='white')
+        label_function.pack(pady=5)
+        
         # Function selection combo box
         self.function_selection = ttk.Combobox(frame2_1, values=[
             "Encrypt Message",
