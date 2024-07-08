@@ -1,10 +1,10 @@
-from tkinter import *
-from tkinter import ttk, messagebox
-from PIL import Image, ImageTk
+from tkinter import * #for creating graphic user interface
+from tkinter import ttk, messagebox #(themed tk) we use ttk for modern widgets like buttons, labels, and for displaying messages
+from PIL import Image, ImageTk #helps for image processing in gui
 import string
 import random
-import pyperclip
-import pyautogui
+import pyperclip #for copy button funcationality
+import pyautogui #for mouse clicks
 import os
 import time
 import rotatescreen
