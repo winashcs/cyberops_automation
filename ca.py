@@ -38,7 +38,7 @@ class CA:
         frame2_1.place(x=0, y=12, width=680, height=350)
         
        # Label for function selection
-        label_function = Label(frame2_1, text="Select :", font=('Arial', 12), bg='white')
+        label_function = Label(frame2_1, text="Select : ", font=('Arial', 12), bg='white')
         label_function.pack(pady=5)
         
         # Function selection combo box
