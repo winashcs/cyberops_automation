@@ -1,4 +1,4 @@
-# python_to_automate_cybersecurity_tasks
+# cyberops_automation
 This repository contains cybersecurity projects made using python language. Hence, we are using python to automate cybersecurity tasks.
 
 **encryption.py**<br>
