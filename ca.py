@@ -46,11 +46,11 @@ class CA: #i used CA here to represent CyberOps Automation
         frame2=Frame(self.root,bd=2,relief=RIDGE,bg='white')
         frame2.place(x=0,y=326,width=1366,height=379)   
         frame2_1=LabelFrame(frame2,bd=2,relief=RIDGE,bg='white')
-        frame2_1.place(x=5,y=12,width=620,height=350)    
+        frame2_1.place(x=0,y=12,width=680,height=350)    
         
         #creating interface for the user to display the selected function
         frame2_2=LabelFrame(frame2,bd=2,relief=RIDGE,bg='white')
-        frame2_2.place(x=735,y=12,width=620,height=350)    
+        frame2_2.place(x=683,y=12,width=680,height=350)    
        
 #this code initializes a tkinter application
 #creates an instance of the CA class, and starts the main event loop for GUI interaction.
