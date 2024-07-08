@@ -34,43 +34,27 @@ class CA:
         frame2.place(x=0, y=326, width=1366, height=379)
         
         # Frame for function selection
-        frame2_1 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='white', text='Function Selection')
+        frame2_1 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='white')
         frame2_1.place(x=0, y=12, width=680, height=350)
         
-        # Function selection buttons
-        sl1=Image.open('images/logo.png')
-        sl1=sl1.resize((100,100), Image.LANCZOS)
-        self.sl11=ImageTk.PhotoImage(sl1)
-        self.sl111=Label(frame2_1,image=self.sl11)
-        self.sl111.place(x=0,y=0,width=100,height=100)  
-        button_encrypt = Button(frame2_1, text="Encrypt Message", command=self.select_encrypt)
-        button_encrypt.pack(pady=5)
-        
-        button_decrypt = Button(frame2_1, text="Decrypt Message", command=self.select_decrypt)
-        button_decrypt.pack(pady=5)
-        
-        button_keyboard_recorder = Button(frame2_1, text="Keyboard Recorder", command=self.select_keyboard_recorder)
-        button_keyboard_recorder.pack(pady=5)
-        
-        button_random_actions = Button(frame2_1, text="Random Clicks", command=self.select_random_actions)
-        button_random_actions.pack(pady=5)
-        
-        button_password_generator = Button(frame2_1, text="Password Generator", command=self.select_password_generator)
-        button_password_generator.pack(pady=5)
-        
-        button_password_validator = Button(frame2_1, text="Password Validator", command=self.select_password_validator)
-        button_password_validator.pack(pady=5)
-        
-        button_screen_rotation = Button(frame2_1, text="Screen Rotation", command=self.select_screen_rotation)
-        button_screen_rotation.pack(pady=5)
-        
-        button_website_blocker = Button(frame2_1, text="Website Blocker", command=self.select_website_blocker)
-        button_website_blocker.pack(pady=5)
+        # Function selection combo box
+        self.function_selection = ttk.Combobox(frame2_1, values=[
+            "Encrypt Message",
+            "Decrypt Message",
+            "Keyboard Recorder",
+            "Random Clicks",
+            "Password Generator",
+            "Password Validator",
+            "Screen Rotation",
+            "Website Blocker"
+        ], state="readonly")
+        self.function_selection.pack(pady=5)
+        self.function_selection.bind("<<ComboboxSelected>>", self.select_function)
         
         # Frame for function display
-        self.frame2_2 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='white', text='Function Display')
+        self.frame2_2 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='white')
         self.frame2_2.place(x=683, y=12, width=680, height=350)
-        
+    
     def load_images(self):
         self.image_objects = []
         for idx, img_path in enumerate(self.images):
@@ -92,6 +76,25 @@ class CA:
                 label.place_configure(x=1366)
                 self.image_objects[idx] = (label, photo, 1366)
         self.root.after(25, self.animate)
+    
+    def select_function(self, event):
+        selected_function = self.function_selection.get()
+        if selected_function == "Encrypt Message":
+            self.select_encrypt()
+        elif selected_function == "Decrypt Message":
+            self.select_decrypt()
+        elif selected_function == "Keyboard Recorder":
+            self.select_keyboard_recorder()
+        elif selected_function == "Random Clicks":
+            self.select_random_actions()
+        elif selected_function == "Password Generator":
+            self.select_password_generator()
+        elif selected_function == "Password Validator":
+            self.select_password_validator()
+        elif selected_function == "Screen Rotation":
+            self.select_screen_rotation()
+        elif selected_function == "Website Blocker":
+            self.select_website_blocker()
     
     def select_encrypt(self):
         self.clear_frame2_2()
