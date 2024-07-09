@@ -293,23 +293,23 @@ class CA:
         photo_password = ImageTk.PhotoImage(image_password)
         label_image_password = Label(self.password_generator, image=photo_password, bg='white')
         label_image_password.image = photo_password
-        label_image_password.pack(pady=10)
+        label_image_password.pack(pady=1)
         
         # Function details for Password Generator
         label_length = Label(self.password_generator, text="Enter password length:")
-        label_length.pack(pady=10)
+        label_length.pack(pady=1)
         
         self.entry_length = Entry(self.password_generator, width=20)
-        self.entry_length.pack(pady=5)
+        self.entry_length.pack(pady=1)
         
         button_generate = Button(self.password_generator, text="Generate Password", command=self.generate_password_button)
-        button_generate.pack(pady=10)
+        button_generate.pack(pady=1)
         
         self.password_display = Label(self.password_generator, text="")
-        self.password_display.pack(pady=10)
+        self.password_display.pack(pady=1)
         
         self.copy_button = Button(self.password_generator, text="Copy Password", command=self.copy_to_clipboard, state=DISABLED)
-        self.copy_button.pack(pady=10)
+        self.copy_button.pack(pady=1)
     
     def generate_password_button(self):
         try:
