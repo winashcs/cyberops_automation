@@ -128,7 +128,7 @@ class CA:
         label_image_encrypt.pack(side=LEFT)
         
         # Function details for Encrypt Message
-        label_message = Label(self.encrypt_frame, text="Enter message:",font=("Arial", 10),bg='#0a111b',fg='#e7fcfd')
+        label_message = Label(self.encrypt_frame, text="Enter message  :",font=("Arial", 10),bg='#0a111b',fg='#e7fcfd')
         label_message.place(x=357, y=140) 
         
         self.entry_message = Entry(self.encrypt_frame, width=30)
