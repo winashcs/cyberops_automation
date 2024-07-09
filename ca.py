@@ -296,20 +296,20 @@ class CA:
         label_image_password.pack(side=LEFT)
         
         # Function details for Password Generator
-        label_length = Label(self.password_generator, text="Enter password length:")
-        label_length.pack(pady=1)
+        label_length = Label(self.password_generator, text="Enter password length :",bg='white')
+        label_length.place(x=357, y=140) 
         
         self.entry_length = Entry(self.password_generator, width=20)
-        self.entry_length.pack(pady=1)
+        self.entry_length.place(x=485, y=141)
         
-        button_generate = Button(self.password_generator, text="Generate Password", command=self.generate_password_button)
-        button_generate.pack(pady=1)
+        button_generate = Button(self.password_generator, text="Generate Password", command=self.generate_password_button,bg='white',bd=2)
+        button_generate.place(x=450,y=170)
         
-        self.password_display = Label(self.password_generator, text="")
-        self.password_display.pack(pady=1)
+        self.password_display = Label(self.password_generator, text="",bg='white')
+        self.password_display.place(x=360,y=205)
         
-        self.copy_button = Button(self.password_generator, text="Copy Password", command=self.copy_to_clipboard, state=DISABLED)
-        self.copy_button.pack(pady=1)
+        self.copy_button = Button(self.password_generator, text="Copy", command=self.copy_to_clipboard, state=DISABLED,bg='white',bd=2)
+        self.copy_button.place(x=520,y=210)
     
     def generate_password_button(self):
         try:
