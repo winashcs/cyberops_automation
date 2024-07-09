@@ -317,7 +317,7 @@ class CA:
             if length <= 0:
                 raise ValueError("Length must be a positive integer.")
             password = self.generate_password(length)
-            self.password_display.config(text=f"Generated Password:\n{password}")
+            self.password_display.config(text=f"Generated Password\n{password}")
             self.copy_button.config(state=NORMAL)
         except ValueError as e:
             messagebox.showerror("Error", str(e))
