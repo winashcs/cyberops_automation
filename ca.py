@@ -346,14 +346,14 @@ class CA:
         label_image_validator.pack(side=LEFT)
         
         # Function details for Password Validator
-        label_password = Label(self.password_validator, text="Enter your password:")
-        label_password.pack(pady=10)
+        label_password = Label(self.password_validator, text="Enter your password :",bg='#01081c',fg='#5add15')
+        label_password.place(x=385, y=140)
         
         self.entry_password = Entry(self.password_validator, show="*")
-        self.entry_password.pack(pady=5)
+        self.entry_password.place(x=505, y=141)
         
-        button_validate = Button(self.password_validator, text="Validate Password", command=self.validate_password)
-        button_validate.pack(pady=10)
+        button_validate = Button(self.password_validator, text="Validate Password", command=self.validate_password,bg='#01081c',fg='#5add15',bd=2)
+        button_validate.place(x=455,y=170)
     
     def validate_password(self):
         password = self.entry_password.get()
