@@ -128,20 +128,20 @@ class CA:
         label_image_encrypt.pack(side=LEFT)
         
         # Function details for Encrypt Message
-        label_message = Label(self.encrypt_frame, text="Enter message:")
-        label_message.pack()
+        label_message = Label(self.encrypt_frame, text="Enter message:",font=("Arial", 10),bg='#0a111b',fg='#e7fcfd')
+        label_message.place(x=357, y=140) 
         
-        self.entry_message = Entry(self.encrypt_frame, width=50)
-        self.entry_message.pack()
+        self.entry_message = Entry(self.encrypt_frame, width=30)
+        self.entry_message.place(x=470, y=141)
         
-        button_encrypt = Button(self.encrypt_frame, text="Encrypt", command=self.encrypt_message)
-        button_encrypt.pack()
+        button_encrypt = Button(self.encrypt_frame, text="Encrypt", command=self.encrypt_message,bg='#16242f',fg='#e7fcfd',bd=2)
+        button_encrypt.place(x=450,y=170)
         
-        self.label_encrypted = Label(self.encrypt_frame, text="")
-        self.label_encrypted.pack()
+        self.label_encrypted = Label(self.encrypt_frame, text="",bg='#16242f',fg='#e7fcfd')
+        self.label_encrypted.place(x=370,y=205)
         
-        button_copy = Button(self.encrypt_frame, text="Copy", command=self.copy_message)
-        button_copy.pack()
+        button_copy = Button(self.encrypt_frame, text="Copy", command=self.copy_message,bg='#16242f',fg='#e7fcfd',bd=2)
+        button_copy.place(x=610,y=203)
     
     def encrypt_message(self):
         plain_text = self.entry_message.get()
@@ -179,20 +179,20 @@ class CA:
         label_image_decrypt.pack(side=LEFT)
         
         # Function details for Decrypt Message
-        label_message = Label(self.decrypt_frame, text="Enter message:")
-        label_message.pack()
+        label_message = Label(self.decrypt_frame, text="Enter message  :",font=("Arial", 10),bg='#0a111b',fg='#e7fcfd')
+        label_message.place(x=357, y=140) 
         
-        self.entry_message = Entry(self.decrypt_frame, width=50)
-        self.entry_message.pack()
+        self.entry_message = Entry(self.decrypt_frame, width=30)
+        self.entry_message.place(x=470, y=141)
         
-        button_decrypt = Button(self.decrypt_frame, text="Decrypt", command=self.decrypt_message)
-        button_decrypt.pack()
+        button_decrypt = Button(self.decrypt_frame, text="Decrypt", command=self.decrypt_message,bg='#16242f',fg='#e7fcfd',bd=2)
+        button_decrypt.place(x=450,y=170)
         
-        self.label_encrypted = Label(self.decrypt_frame, text="")
-        self.label_encrypted.pack()
+        self.label_encrypted = Label(self.decrypt_frame, text="",bg='#16242f',fg='#e7fcfd')
+        self.label_encrypted.place(x=370,y=205)
         
-        button_copy = Button(self.decrypt_frame, text="Copy", command=self.copy_message)
-        button_copy.pack()
+        button_copy = Button(self.decrypt_frame, text="Copy", command=self.copy_message,bg='#16242f',fg='#e7fcfd',bd=2)
+        button_copy.place(x=610,y=203)
     
     def select_keyboard_recorder(self):
         self.clear_frame2_2()
@@ -254,7 +254,7 @@ class CA:
         label_iterations = Label(self.random_actions, text="Enter the number of iterations : ",font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1')
         label_iterations.place(x=350, y=140)
         
-        self.entry_iterations = Entry(self.random_actions, width=15)
+        self.entry_iterations = Entry(self.random_actions, width=15) 
         self.entry_iterations.place(x=569, y=143)
         
         button_start = Button(self.random_actions, text="Start", command=self.start_random_actions,font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1',bd=2)
