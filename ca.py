@@ -209,7 +209,7 @@ class CA:
         
         # Function details for Keyboard Recorder
         self.record_button = Button(self.keyboard_recorder, text="Start Recording", command=self.start_recording,font=("Arial", 20), bg="#00af9a",fg="white", bd=2)
-        self.record_button.pack(pady=155)        
+        self.record_button.place(x=400,y=140)     
         self.recording = False
         self.recorded_text = ""
     
@@ -258,7 +258,7 @@ class CA:
         self.entry_iterations.place(x=569, y=143)
         
         button_start = Button(self.random_actions, text="Start", command=self.start_random_actions,font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1',bd=2)
-        button_start.place(x=525,y=170)
+        button_start.place(x=490,y=170)
     
     def start_random_actions(self):
         num_iterations = self.entry_iterations.get()
