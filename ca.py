@@ -284,31 +284,31 @@ class CA:
     
     def select_password_generator(self):
         self.clear_frame2_2()
-        self.password_generator = Frame(self.frame2_2, bg='white')
+        self.password_generator = Frame(self.frame2_2, bg='#fcfefb')
         self.password_generator.pack(expand=True, fill=BOTH)
         
         # Image for Password Generator
         image_password = Image.open('images/4.jpg')
         image_password = image_password.resize((350, 350), Image.LANCZOS)
         photo_password = ImageTk.PhotoImage(image_password)
-        label_image_password = Label(self.password_generator, image=photo_password, bg='white')
+        label_image_password = Label(self.password_generator, image=photo_password, bg='#fcfefb')
         label_image_password.image = photo_password
         label_image_password.pack(side=LEFT)
         
         # Function details for Password Generator
-        label_length = Label(self.password_generator, text="Enter password length :",bg='white')
+        label_length = Label(self.password_generator, text="Enter password length :",bg='white',fg='#024097')
         label_length.place(x=357, y=140) 
         
-        self.entry_length = Entry(self.password_generator, width=20)
+        self.entry_length = Entry(self.password_generator, width=20,bd=4)
         self.entry_length.place(x=485, y=141)
         
-        button_generate = Button(self.password_generator, text="Generate Password", command=self.generate_password_button,bg='white',bd=2)
+        button_generate = Button(self.password_generator, text="Generate Password", command=self.generate_password_button,bg='white',bd=2,fg='#024097')
         button_generate.place(x=450,y=170)
         
-        self.password_display = Label(self.password_generator, text="",bg='white')
+        self.password_display = Label(self.password_generator, text="",bg='white',fg='#024097')
         self.password_display.place(x=360,y=205)
         
-        self.copy_button = Button(self.password_generator, text="Copy", command=self.copy_to_clipboard, state=DISABLED,bg='white',bd=2)
+        self.copy_button = Button(self.password_generator, text="Copy", command=self.copy_to_clipboard, state=DISABLED,bg='white',bd=2,fg='#024097')
         self.copy_button.place(x=520,y=210)
     
     def generate_password_button(self):
