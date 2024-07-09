@@ -460,7 +460,7 @@ class CA:
         photo_website = ImageTk.PhotoImage(image_website)
         label_image_website = Label(self.website_blocker, image=photo_website, bg='white')
         label_image_website.image = photo_website
-        label_image_website.pack(pady=10)
+        label_image_website.pack(pady=1)
         
         # Function details for Website Blocker
         label_website = Label(self.website_blocker, text="Enter website (e.g., example.com):")
