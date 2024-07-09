@@ -168,7 +168,7 @@ class CA:
     def select_decrypt(self):
         self.clear_frame2_2()
         self.decrypt_frame = Frame(self.frame2_2, bg='white')
-        self.decrypt_frame.pack()
+        self.decrypt_frame.pack(expand=True, fill=BOTH)
         
         # Image for Decrypt Message
         image_decrypt = Image.open('images/1.jpg')
@@ -176,7 +176,7 @@ class CA:
         photo_decrypt = ImageTk.PhotoImage(image_decrypt)
         label_image_decrypt = Label(self.decrypt_frame, image=photo_decrypt, bg='white')
         label_image_decrypt.image = photo_decrypt
-        label_image_decrypt.pack(side=LEFT, padx=20)
+        label_image_decrypt.pack(padx=20)
         
         # Function details for Decrypt Message
         label_message = Label(self.decrypt_frame, text="Enter message:")
