@@ -116,14 +116,14 @@ class CA:
     
     def select_encrypt(self):
         self.clear_frame2_2()
-        self.encrypt_frame = Frame(self.frame2_2, bg='white')
+        self.encrypt_frame = Frame(self.frame2_2, bg='#0a111b')
         self.encrypt_frame.pack(expand=True, fill=BOTH)
         
         # Image for Encrypt Message
         image_encrypt = Image.open('images/1.jpg')
         image_encrypt = image_encrypt.resize((350, 350), Image.LANCZOS)
         photo_encrypt = ImageTk.PhotoImage(image_encrypt)
-        label_image_encrypt = Label(self.encrypt_frame, image=photo_encrypt, bg='white')
+        label_image_encrypt = Label(self.encrypt_frame, image=photo_encrypt, bg='#0a111b')
         label_image_encrypt.image = photo_encrypt
         label_image_encrypt.pack(side=LEFT)
         
@@ -167,14 +167,14 @@ class CA:
     
     def select_decrypt(self):
         self.clear_frame2_2()
-        self.decrypt_frame = Frame(self.frame2_2, bg='white')
+        self.decrypt_frame = Frame(self.frame2_2, bg='#0a111b')
         self.decrypt_frame.pack(expand=True, fill=BOTH)
         
         # Image for Decrypt Message
         image_decrypt = Image.open('images/1.jpg')
         image_decrypt = image_decrypt.resize((350, 350), Image.LANCZOS)
         photo_decrypt = ImageTk.PhotoImage(image_decrypt)
-        label_image_decrypt = Label(self.decrypt_frame, image=photo_decrypt, bg='white')
+        label_image_decrypt = Label(self.decrypt_frame, image=photo_decrypt, bg='#0a111b')
         label_image_decrypt.image = photo_decrypt
         label_image_decrypt.pack(side=LEFT)
         
@@ -196,14 +196,14 @@ class CA:
     
     def select_keyboard_recorder(self):
         self.clear_frame2_2()
-        self.keyboard_recorder = Frame(self.frame2_2, bg='white')
+        self.keyboard_recorder = Frame(self.frame2_2, bg='#00ad99')
         self.keyboard_recorder.pack(expand=True, fill=BOTH)
         
         # Image for Keyboard Recorder
         image_keyboard = Image.open('images/2.jpg')
         image_keyboard = image_keyboard.resize((350, 350), Image.LANCZOS)
         photo_keyboard = ImageTk.PhotoImage(image_keyboard)
-        label_image_keyboard = Label(self.keyboard_recorder, image=photo_keyboard, bg='white')
+        label_image_keyboard = Label(self.keyboard_recorder, image=photo_keyboard, bg='#00ad99')
         label_image_keyboard.image = photo_keyboard
         label_image_keyboard.pack(side=LEFT)
         
@@ -239,14 +239,14 @@ class CA:
     
     def select_random_actions(self):
         self.clear_frame2_2()
-        self.random_actions = Frame(self.frame2_2, bg='white')
+        self.random_actions = Frame(self.frame2_2, bg='#0a0e1a')
         self.random_actions.pack(expand=True, fill=BOTH)
         
         # Image for Random Clicks
         image_random = Image.open('images/3.jpg')
         image_random = image_random.resize((350, 350), Image.LANCZOS)
         photo_random = ImageTk.PhotoImage(image_random)
-        label_image_random = Label(self.random_actions, image=photo_random, bg='white')
+        label_image_random = Label(self.random_actions, image=photo_random, bg='#0a0e1a')
         label_image_random.image = photo_random
         label_image_random.pack(side=LEFT)
         
@@ -334,14 +334,14 @@ class CA:
     
     def select_password_validator(self):
         self.clear_frame2_2()
-        self.password_validator = Frame(self.frame2_2, bg='white')
+        self.password_validator = Frame(self.frame2_2, bg='#01021b')
         self.password_validator.pack(expand=True, fill=BOTH)
         
         # Image for Password Validator
         image_validator = Image.open('images/5.jpg')
         image_validator = image_validator.resize((350, 350), Image.LANCZOS)
         photo_validator = ImageTk.PhotoImage(image_validator)
-        label_image_validator = Label(self.password_validator, image=photo_validator, bg='white')
+        label_image_validator = Label(self.password_validator, image=photo_validator, bg='#01021b')
         label_image_validator.image = photo_validator
         label_image_validator.pack(side=LEFT)
         
@@ -397,14 +397,14 @@ class CA:
     
     def select_screen_rotation(self):
         self.clear_frame2_2()
-        self.screen_rotation = Frame(self.frame2_2, bg='white')
+        self.screen_rotation = Frame(self.frame2_2, bg='#000308')
         self.screen_rotation.pack(expand=True, fill=BOTH)
         
         # Image for Screen Rotation
         image_rotation = Image.open('images/6.jpg')
         image_rotation = image_rotation.resize((350, 350), Image.LANCZOS)
         photo_rotation = ImageTk.PhotoImage(image_rotation)
-        label_image_rotation = Label(self.screen_rotation, image=photo_rotation, bg='white')
+        label_image_rotation = Label(self.screen_rotation, image=photo_rotation, bg='#000308')
         label_image_rotation.image = photo_rotation
         label_image_rotation.pack(side=LEFT)
         
@@ -441,14 +441,14 @@ class CA:
     
     def select_website_blocker(self):
         self.clear_frame2_2()
-        self.website_blocker = Frame(self.frame2_2, bg='white')
+        self.website_blocker = Frame(self.frame2_2, bg='#02a1fc')
         self.website_blocker.pack(expand=True, fill=BOTH)
         
         # Image for Website Blocker
         image_website = Image.open('images/7.jpg')
         image_website = image_website.resize((350, 350), Image.LANCZOS)
         photo_website = ImageTk.PhotoImage(image_website)
-        label_image_website = Label(self.website_blocker, image=photo_website, bg='white')
+        label_image_website = Label(self.website_blocker, image=photo_website, bg='#02a1fc')
         label_image_website.image = photo_website
         label_image_website.pack(side=LEFT)
         
