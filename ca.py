@@ -117,7 +117,7 @@ class CA:
     def select_encrypt(self):
         self.clear_frame2_2()
         self.encrypt_frame = Frame(self.frame2_2, bg='white')
-        self.encrypt_frame.pack()
+        self.encrypt_frame.pack(expand=True, fill=BOTH)
         
         # Image for Encrypt Message
         image_encrypt = Image.open('images/1.jpg')
@@ -125,7 +125,7 @@ class CA:
         photo_encrypt = ImageTk.PhotoImage(image_encrypt)
         label_image_encrypt = Label(self.encrypt_frame, image=photo_encrypt, bg='white')
         label_image_encrypt.image = photo_encrypt
-        label_image_encrypt.pack(side=LEFT, padx=20)
+        label_image_encrypt.pack(padx=20)
         
         # Function details for Encrypt Message
         label_message = Label(self.encrypt_frame, text="Enter message:")
