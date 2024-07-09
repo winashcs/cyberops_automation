@@ -251,14 +251,14 @@ class CA:
         label_image_random.pack(side=LEFT)
         
         # Function details for Random Clicks
-        label_iterations = Label(self.random_actions, text="Enter the number of iterations : ",font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1')
-        label_iterations.place(x=350, y=140)
+        label_iterations = Label(self.random_actions, text="Enter the number of clicks : ",font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1')
+        label_iterations.place(x=360, y=140)
         
         self.entry_iterations = Entry(self.random_actions, width=15) 
-        self.entry_iterations.place(x=569, y=143)
+        self.entry_iterations.place(x=559, y=143)
         
         button_start = Button(self.random_actions, text="Start", command=self.start_random_actions,font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1',bd=2)
-        button_start.place(x=490,y=170)
+        button_start.place(x=530,y=170)
     
     def start_random_actions(self):
         num_iterations = self.entry_iterations.get()
@@ -409,14 +409,14 @@ class CA:
         label_image_rotation.pack(side=LEFT)
         
         # Function details for Screen Rotation
-        label_rotations = Label(self.screen_rotation, text="Enter the number of rotations:")
-        label_rotations.pack(pady=10)
+        label_rotations = Label(self.screen_rotation, text="Enter the number of rotations :",bg='#010409',fg='#73d6ee')
+        label_rotations.place(x=385, y=140)
         
-        self.entry_rotations = Entry(self.screen_rotation, width=20)
-        self.entry_rotations.pack(pady=5)
+        self.entry_rotations = Entry(self.screen_rotation, width=15)
+        self.entry_rotations.place(x=555, y=141)
         
-        button_rotate = Button(self.screen_rotation, text="Rotate Screen", command=self.rotate_screen)
-        button_rotate.pack(pady=10)
+        button_rotate = Button(self.screen_rotation, text="Rotate Screen", command=self.rotate_screen,bg='#010409',fg='#73d6ee',bd=2)
+        button_rotate.place(x=495,y=170)
     
     def rotate_screen(self):
         try:
