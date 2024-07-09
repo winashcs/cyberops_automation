@@ -205,15 +205,11 @@ class CA:
         photo_keyboard = ImageTk.PhotoImage(image_keyboard)
         label_image_keyboard = Label(self.keyboard_recorder, image=photo_keyboard, bg='white')
         label_image_keyboard.image = photo_keyboard
-        label_image_keyboard.pack(pady=10)
+        label_image_keyboard.pack(pady=33)
         
         # Function details for Keyboard Recorder
         self.record_button = Button(self.keyboard_recorder, text="Start Recording", command=self.start_recording)
-        self.record_button.pack(pady=20)
-        
-        self.exit_button = Button(self.keyboard_recorder, text="Exit", command=self.exit_application)
-        self.exit_button.pack()
-        
+        self.record_button.pack(pady=20)        
         self.recording = False
         self.recorded_text = ""
     
@@ -240,12 +236,6 @@ class CA:
         file_path = os.path.join(script_dir, "record.txt")
         with open(file_path, 'a') as f:
             f.write(text + '\n')
-    
-    def exit_application(self):
-        if self.recording:
-            messagebox.showwarning("Warning", "Please stop recording before exiting.")
-        else:
-            self.root.destroy()
     
     def select_random_actions(self):
         self.clear_frame2_2()
