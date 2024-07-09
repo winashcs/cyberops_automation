@@ -453,20 +453,20 @@ class CA:
         label_image_website.pack(side=LEFT)
         
         # Function details for Website Blocker
-        label_website = Label(self.website_blocker, text="Enter website (e.g., example.com):")
-        label_website.pack(pady=1)
+        label_website = Label(self.website_blocker, text="Enter website (e.g., example.com)",bg='#04a3fe',fg='#fefefe')
+        label_website.place(x=422, y=150)
         
-        self.entry_website = Entry(self.website_blocker, width=30)
-        self.entry_website.pack(pady=1)
+        self.entry_website = Entry(self.website_blocker, width=40)
+        self.entry_website.place(x=390, y=180)
         
-        button_block = Button(self.website_blocker, text="Block Website", command=lambda: self.block_website(self.entry_website.get()))
-        button_block.pack(pady=1)
+        button_block = Button(self.website_blocker, text="Block Website", command=lambda: self.block_website(self.entry_website.get()),bg='#04a3fe',fg='#fefefe',bd=2)
+        button_block.place(x=420, y=210)
         
-        button_list = Button(self.website_blocker, text="List Blocked Websites", command=self.list_blocked_websites)
-        button_list.pack(pady=1)
+        button_list = Button(self.website_blocker, text="List Blocked Websites", command=self.list_blocked_websites,bg='#04a3fe',fg='#fefefe',bd=2)
+        button_list.place(x=455,y=115)
         
-        button_unblock = Button(self.website_blocker, text="Unblock Website", command=lambda: self.unblock_website(self.entry_website.get()))
-        button_unblock.pack(pady=1)
+        button_unblock = Button(self.website_blocker, text="Unblock Website", command=lambda: self.unblock_website(self.entry_website.get()),bg='#04a3fe',fg='#fefefe',bd=2)
+        button_unblock.place(x=510, y=210)
     
     def block_website(self, website):
         try:
