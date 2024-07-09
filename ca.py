@@ -450,23 +450,23 @@ class CA:
         photo_website = ImageTk.PhotoImage(image_website)
         label_image_website = Label(self.website_blocker, image=photo_website, bg='white')
         label_image_website.image = photo_website
-        label_image_website.pack(pady=1)
+        label_image_website.pack(pady=4)
         
         # Function details for Website Blocker
         label_website = Label(self.website_blocker, text="Enter website (e.g., example.com):")
-        label_website.pack(pady=10)
+        label_website.pack(pady=1)
         
         self.entry_website = Entry(self.website_blocker, width=30)
-        self.entry_website.pack(pady=5)
+        self.entry_website.pack(pady=1)
         
         button_block = Button(self.website_blocker, text="Block Website", command=lambda: self.block_website(self.entry_website.get()))
-        button_block.pack(pady=5)
+        button_block.pack(pady=1)
         
         button_list = Button(self.website_blocker, text="List Blocked Websites", command=self.list_blocked_websites)
-        button_list.pack(pady=5)
+        button_list.pack(pady=1)
         
         button_unblock = Button(self.website_blocker, text="Unblock Website", command=lambda: self.unblock_website(self.entry_website.get()))
-        button_unblock.pack(pady=5)
+        button_unblock.pack(pady=1)
     
     def block_website(self, website):
         try:
