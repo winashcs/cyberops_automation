@@ -251,14 +251,14 @@ class CA:
         label_image_random.pack(side=LEFT)
         
         # Function details for Random Clicks
-        label_iterations = Label(self.random_actions, text="Enter the number of iterations:")
-        label_iterations.pack(pady=10)
+        label_iterations = Label(self.random_actions, text="Enter the number of iterations : ",font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1')
+        label_iterations.place(x=350, y=140)
         
-        self.entry_iterations = Entry(self.random_actions, width=20)
-        self.entry_iterations.pack(pady=5)
+        self.entry_iterations = Entry(self.random_actions, width=15)
+        self.entry_iterations.place(x=569, y=143)
         
-        button_start = Button(self.random_actions, text="Start", command=self.start_random_actions)
-        button_start.pack(pady=10)
+        button_start = Button(self.random_actions, text="Start", command=self.start_random_actions,font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1',bd=2)
+        button_start.place(x=525,y=170)
     
     def start_random_actions(self):
         num_iterations = self.entry_iterations.get()
