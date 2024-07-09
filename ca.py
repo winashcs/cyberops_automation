@@ -208,8 +208,8 @@ class CA:
         label_image_keyboard.pack(side=LEFT)
         
         # Function details for Keyboard Recorder
-        self.record_button = Button(self.keyboard_recorder, text="Start Recording", command=self.start_recording)
-        self.record_button.pack(pady=20)        
+        self.record_button = Button(self.keyboard_recorder, text="Start Recording", command=self.start_recording,font=("Arial", 20), bg="#00af9a",fg="white", bd=2)
+        self.record_button.pack(pady=155)        
         self.recording = False
         self.recorded_text = ""
     
