@@ -78,7 +78,8 @@ class CA:
         self.c = list(string.digits + string.ascii_letters + string.punctuation + " ")
         self.key = self.c.copy()
         random.shuffle(self.key)
-    
+        
+    #for images to go from right to left
     def load_images(self):
         self.image_objects = []
         for idx, img_path in enumerate(self.images):
@@ -89,8 +90,7 @@ class CA:
             label.image = photo
             label.place(x=idx * 196, y=130, width=196, height=196)
             self.function_labels.append(label)
-            self.image_objects.append((label, photo, idx * 196))
-    
+            self.image_objects.append((label, photo, idx * 196))    
     def animate(self):
         for idx, (label, photo, current_x) in enumerate(self.image_objects):
             new_x = current_x - 1
