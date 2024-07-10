@@ -238,18 +238,8 @@ class CA:
             self.recorded_text += event.char
     
     def save_to_file(self, text):
-        script_dir = os.path.dirname(__file__)
-        file_path = os.path.join(script_dir, "record.txt")
-
-        try:
-            if not os.path.exists(script_dir):
-                os.makedirs(script_dir)
-
-            with open(file_path, 'a') as f:
-                f.write(text + '\n')
-            print("Text saved to file successfully.")
-        except Exception as e:
-            print("Error saving text to file:", e)
+        with open("record.txt",'a') as f:
+            f.write(text + '\n')
     
     def select_random_actions(self):
         self.clear_frame2_2()
