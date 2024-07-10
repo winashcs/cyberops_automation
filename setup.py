@@ -1,3 +1,4 @@
+#use python setup.py bdist_msi in cmd 
 import cx_Freeze
 import sys
 import os 
