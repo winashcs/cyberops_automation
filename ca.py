@@ -66,8 +66,14 @@ class CA:
         frame2_1.grid_rowconfigure(0, weight=1) 
         
         # Frame for function display
-        self.frame2_2 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='white')
+        self.frame2_2 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='black')
         self.frame2_2.place(x=683, y=12, width=680, height=350)
+        
+        dl2=Image.open('images/bg.jpg')
+        dl2=dl2.resize((680,350), Image.LANCZOS)
+        self.dl22=ImageTk.PhotoImage(dl2)
+        self.dl222=Label(self.frame2_2,image=self.dl22,bg='black')
+        self.dl222.place(x=0,y=0)
         
         self.c = list(string.digits + string.ascii_letters + string.punctuation + " ")
         self.key = self.c.copy()
