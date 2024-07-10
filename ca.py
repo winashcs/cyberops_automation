@@ -23,20 +23,19 @@ class CA:
         title = Label(self.root, text='CyberOps Automation', font=('Lucida Handwriting', 70, 'bold'), bg='#1178bd', fg='#ffd414')
         title.place(x=0, y=0, width=1366, height=130)
         
-        # Images for functions and logos
+        # Images for going from right to left
         self.images = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg', 'images/4.jpg', 'images/5.jpg', 'images/6.jpg', 'images/7.jpg', 'images/logo.png']
         self.function_labels = []
         self.load_images()
         self.animate()
         
-        # Frame for function selection and display
+        # main Frame for function selection and display
         self.frame2 = Frame(self.root, bd=2, relief=RIDGE, bg='black')
         self.frame2.place(x=0, y=326, width=1366, height=379)
         
         # Frame for function selection
         frame2_1 = LabelFrame(self.frame2,bg='black',bd=0)
-        frame2_1.place(x=0, y=12, width=680, height=350)
-        
+        frame2_1.place(x=0, y=12, width=680, height=350)        
         sl1=Image.open('images/logo.png')
         sl1=sl1.resize((350,350), Image.LANCZOS)
         self.sl11=ImageTk.PhotoImage(sl1)
@@ -67,14 +66,14 @@ class CA:
         
         # Frame for function display
         self.frame2_2 = LabelFrame(self.frame2, bd=0)
-        self.frame2_2.place(x=675, y=12, width=680, height=350)
-        
+        self.frame2_2.place(x=675, y=12, width=680, height=350)        
         dl2=Image.open('images/bg.jpg')
         dl2=dl2.resize((680,350), Image.LANCZOS)
         self.dl22=ImageTk.PhotoImage(dl2)
         self.dl222=Label(self.frame2_2,image=self.dl22,bg='black')
         self.dl222.place(x=0,y=0)
         
+        #variables created to be used during encrypting/decrypting function
         self.c = list(string.digits + string.ascii_letters + string.punctuation + " ")
         self.key = self.c.copy()
         random.shuffle(self.key)
@@ -100,7 +99,8 @@ class CA:
                 label.place_configure(x=1366)
                 self.image_objects[idx] = (label, photo, 1366)
         self.root.after(25, self.animate)
-    
+        
+    #function for selecting a function 
     def select_function(self, event):
         selected_function = self.function_selection.get()
         if selected_function == "Encrypt Message":
@@ -119,106 +119,83 @@ class CA:
             self.select_screen_rotation()
         elif selected_function == "Website Blocker":
             self.select_website_blocker()
-    
+            
+    #function for encrypt/decrypt
     def select_encrypt(self):
         self.clear_frame2_2()
         self.encrypt_frame = Frame(self.frame2_2, bg='#0a111b')
-        self.encrypt_frame.pack(expand=True, fill=BOTH)
-        
-        # Image for Encrypt Message
+        self.encrypt_frame.pack(expand=True, fill=BOTH)        
         image_encrypt = Image.open('images/1.jpg')
         image_encrypt = image_encrypt.resize((350, 350), Image.LANCZOS)
         photo_encrypt = ImageTk.PhotoImage(image_encrypt)
         label_image_encrypt = Label(self.encrypt_frame, image=photo_encrypt, bg='#0a111b')
         label_image_encrypt.image = photo_encrypt
         label_image_encrypt.pack(side=LEFT)
-        
-        # Function details for Encrypt Message
         label_message = Label(self.encrypt_frame, text="Enter message  :",font=("Arial", 10),bg='#0a111b',fg='#e7fcfd')
-        label_message.place(x=357, y=140) 
-        
+        label_message.place(x=357, y=140)        
         self.entry_message = Entry(self.encrypt_frame, width=30)
-        self.entry_message.place(x=470, y=141)
-        
+        self.entry_message.place(x=470, y=141)        
         button_encrypt = Button(self.encrypt_frame, text="Encrypt", command=self.encrypt_message,bg='#16242f',fg='#e7fcfd',bd=2)
-        button_encrypt.place(x=450,y=170)
-        
+        button_encrypt.place(x=450,y=170)        
         self.label_encrypted = Label(self.encrypt_frame, text="",bg='#16242f',fg='#e7fcfd')
-        self.label_encrypted.place(x=370,y=205)
-        
+        self.label_encrypted.place(x=370,y=205)        
         button_copy = Button(self.encrypt_frame, text="Copy", command=self.copy_message,bg='#16242f',fg='#e7fcfd',bd=2)
-        button_copy.place(x=610,y=203)
-    
+        button_copy.place(x=610,y=203)    
     def encrypt_message(self):
         plain_text = self.entry_message.get()
         cipher_text = ""
         for l in plain_text:
             index = self.c.index(l)
             cipher_text += self.key[index]
-        self.label_encrypted.config(text="Encrypted message: " + cipher_text)
-    
+        self.label_encrypted.config(text="Encrypted message: " + cipher_text)    
     def decrypt_message(self):
         cipher_text = self.entry_message.get()
         plain_text = ""
         for l in cipher_text:
             index = self.key.index(l)
             plain_text += self.c[index]
-        self.label_encrypted.config(text="Decrypted message: " + plain_text)
-    
+        self.label_encrypted.config(text="Decrypted message: " + plain_text)    
     def copy_message(self):
         message_to_copy = self.label_encrypted.cget("text")
         message_to_copy = message_to_copy.split(": ")[1]
         pyperclip.copy(message_to_copy)
-        messagebox.showinfo("Copy", "Message copied to clipboard!")
-    
+        messagebox.showinfo("Copy", "Message copied to clipboard!")    
     def select_decrypt(self):
         self.clear_frame2_2()
         self.decrypt_frame = Frame(self.frame2_2, bg='#0a111b')
         self.decrypt_frame.pack(expand=True, fill=BOTH)
-        
-        # Image for Decrypt Message
         image_decrypt = Image.open('images/1.jpg')
         image_decrypt = image_decrypt.resize((350, 350), Image.LANCZOS)
         photo_decrypt = ImageTk.PhotoImage(image_decrypt)
         label_image_decrypt = Label(self.decrypt_frame, image=photo_decrypt, bg='#0a111b')
         label_image_decrypt.image = photo_decrypt
         label_image_decrypt.pack(side=LEFT)
-        
-        # Function details for Decrypt Message
         label_message = Label(self.decrypt_frame, text="Enter message  :",font=("Arial", 10),bg='#0a111b',fg='#e7fcfd')
-        label_message.place(x=357, y=140) 
-        
+        label_message.place(x=357, y=140)         
         self.entry_message = Entry(self.decrypt_frame, width=30)
-        self.entry_message.place(x=470, y=141)
-        
+        self.entry_message.place(x=470, y=141)        
         button_decrypt = Button(self.decrypt_frame, text="Decrypt", command=self.decrypt_message,bg='#16242f',fg='#e7fcfd',bd=2)
-        button_decrypt.place(x=450,y=170)
-        
+        button_decrypt.place(x=450,y=170)        
         self.label_encrypted = Label(self.decrypt_frame, text="",bg='#16242f',fg='#e7fcfd')
-        self.label_encrypted.place(x=370,y=205)
-        
+        self.label_encrypted.place(x=370,y=205)        
         button_copy = Button(self.decrypt_frame, text="Copy", command=self.copy_message,bg='#16242f',fg='#e7fcfd',bd=2)
         button_copy.place(x=610,y=203)
-    
+        
+    #function for keylogger    
     def select_keyboard_recorder(self):
         self.clear_frame2_2()
         self.keyboard_recorder = Frame(self.frame2_2, bg='#00ad99')
-        self.keyboard_recorder.pack(expand=True, fill=BOTH)
-        
-        # Image for Keyboard Recorder
+        self.keyboard_recorder.pack(expand=True, fill=BOTH)        
         image_keyboard = Image.open('images/2.jpg')
         image_keyboard = image_keyboard.resize((350, 350), Image.LANCZOS)
         photo_keyboard = ImageTk.PhotoImage(image_keyboard)
         label_image_keyboard = Label(self.keyboard_recorder, image=photo_keyboard, bg='#00ad99')
         label_image_keyboard.image = photo_keyboard
         label_image_keyboard.pack(side=LEFT)
-        
-        # Function details for Keyboard Recorder
         self.record_button = Button(self.keyboard_recorder, text="Start Recording", command=self.start_recording,font=("Arial", 20), bg="#00af9a",fg="white", bd=2)
         self.record_button.place(x=400,y=140)     
         self.recording = False
-        self.recorded_text = ""
-    
+        self.recorded_text = ""    
     def start_recording(self):
         if not self.recording:
             self.recording = True
@@ -231,52 +208,41 @@ class CA:
             
             if self.recorded_text:
                 self.save_to_file(self.recorded_text)
-                self.recorded_text = ""
-    
+                self.recorded_text = ""    
     def on_key_press(self, event):
         if self.recording:
-            self.recorded_text += event.char
-    
+            self.recorded_text += event.char    
     def save_to_file(self, text):
         with open("record.txt",'a') as f:
             f.write(text + '\n')
-    
+            
+    #function for random mouse clicks    
     def select_random_actions(self):
         self.clear_frame2_2()
         self.random_actions = Frame(self.frame2_2, bg='#0a0e1a')
-        self.random_actions.pack(expand=True, fill=BOTH)
-        
-        # Image for Random Clicks
+        self.random_actions.pack(expand=True, fill=BOTH)        
         image_random = Image.open('images/3.jpg')
         image_random = image_random.resize((350, 350), Image.LANCZOS)
         photo_random = ImageTk.PhotoImage(image_random)
         label_image_random = Label(self.random_actions, image=photo_random, bg='#0a0e1a')
         label_image_random.image = photo_random
         label_image_random.pack(side=LEFT)
-        
-        # Function details for Random Clicks
         label_iterations = Label(self.random_actions, text="Enter the number of clicks : ",font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1')
-        label_iterations.place(x=360, y=140)
-        
+        label_iterations.place(x=360, y=140)        
         self.entry_iterations = Entry(self.random_actions, width=15) 
-        self.entry_iterations.place(x=559, y=143)
-        
+        self.entry_iterations.place(x=559, y=143)        
         button_start = Button(self.random_actions, text="Start", command=self.start_random_actions,font=("Arial", 12),bg='#0a0e1a',fg='#b0efd1',bd=2)
-        button_start.place(x=530,y=170)
-    
+        button_start.place(x=530,y=170)    
     def start_random_actions(self):
         num_iterations = self.entry_iterations.get()
-        self.perform_random_actions(num_iterations)
-    
+        self.perform_random_actions(num_iterations)    
     def perform_random_actions(self, num_iterations):
-        pyautogui.FAILSAFE = False
-        
+        pyautogui.FAILSAFE = False        
         try:
             num_iterations = int(num_iterations)
         except ValueError:
             messagebox.showerror("Error", "Invalid input. Please enter a valid integer.")
-            return
-        
+            return        
         for _ in range(num_iterations):
             h = random.randint(0, 1080)
             w = random.randint(0, 1920)
@@ -286,35 +252,27 @@ class CA:
             pyautogui.hotkey('win', 'r')
             time.sleep(2)
     
+    #function for password generation    
     def select_password_generator(self):
         self.clear_frame2_2()
         self.password_generator = Frame(self.frame2_2, bg='#fcfefb')
         self.password_generator.pack(expand=True, fill=BOTH)
-        
-        # Image for Password Generator
         image_password = Image.open('images/4.jpg')
         image_password = image_password.resize((350, 350), Image.LANCZOS)
         photo_password = ImageTk.PhotoImage(image_password)
         label_image_password = Label(self.password_generator, image=photo_password, bg='#fcfefb')
         label_image_password.image = photo_password
-        label_image_password.pack(side=LEFT)
-        
-        # Function details for Password Generator
+        label_image_password.pack(side=LEFT)        
         label_length = Label(self.password_generator, text="Enter password length :",bg='white',fg='#024097')
-        label_length.place(x=357, y=140) 
-        
+        label_length.place(x=357, y=140)         
         self.entry_length = Entry(self.password_generator, width=20,bd=4)
-        self.entry_length.place(x=485, y=141)
-        
+        self.entry_length.place(x=485, y=141)        
         button_generate = Button(self.password_generator, text="Generate Password", command=self.generate_password_button,bg='white',bd=2,fg='#024097')
-        button_generate.place(x=450,y=170)
-        
+        button_generate.place(x=450,y=170)        
         self.password_display = Label(self.password_generator, text="",bg='white',fg='#024097')
-        self.password_display.place(x=360,y=205)
-        
+        self.password_display.place(x=360,y=205)        
         self.copy_button = Button(self.password_generator, text="Copy", command=self.copy_to_clipboard, state=DISABLED,bg='white',bd=2,fg='#024097')
-        self.copy_button.place(x=520,y=210)
-    
+        self.copy_button.place(x=520,y=210)    
     def generate_password_button(self):
         try:
             length = int(self.entry_length.get())
@@ -324,56 +282,45 @@ class CA:
             self.password_display.config(text=f"Generated Password\n{password}")
             self.copy_button.config(state=NORMAL)
         except ValueError as e:
-            messagebox.showerror("Error", str(e))
-    
+            messagebox.showerror("Error", str(e))    
     def generate_password(self, length):
         characters = string.ascii_letters + string.digits + string.punctuation
         password = ''.join(random.choice(characters) for _ in range(length))
-        return password
-    
+        return password    
     def copy_to_clipboard(self):
         password = self.password_display.cget("text").split('\n')[1]
         pyperclip.copy(password)
-        messagebox.showinfo("Copied", "Password copied to clipboard!")
-    
+        messagebox.showinfo("Copied", "Password copied to clipboard!")    
+        
+    #function for password validation
     def select_password_validator(self):
         self.clear_frame2_2()
         self.password_validator = Frame(self.frame2_2, bg='#01021b')
-        self.password_validator.pack(expand=True, fill=BOTH)
-        
-        # Image for Password Validator
+        self.password_validator.pack(expand=True, fill=BOTH)        
         image_validator = Image.open('images/5.jpg')
         image_validator = image_validator.resize((350, 350), Image.LANCZOS)
         photo_validator = ImageTk.PhotoImage(image_validator)
         label_image_validator = Label(self.password_validator, image=photo_validator, bg='#01021b')
         label_image_validator.image = photo_validator
-        label_image_validator.pack(side=LEFT)
-        
-        # Function details for Password Validator
+        label_image_validator.pack(side=LEFT)        
         label_password = Label(self.password_validator, text="Enter your password :",bg='#01081c',fg='#5add15')
-        label_password.place(x=385, y=140)
-        
+        label_password.place(x=385, y=140)        
         self.entry_password = Entry(self.password_validator, show="*")
-        self.entry_password.place(x=505, y=141)
-        
+        self.entry_password.place(x=505, y=141)        
         button_validate = Button(self.password_validator, text="Validate Password", command=self.validate_password,bg='#01081c',fg='#5add15',bd=2)
-        button_validate.place(x=455,y=170)
-    
+        button_validate.place(x=455,y=170)    
     def validate_password(self):
         password = self.entry_password.get()
         validation_result = self.pv(password)
-        messagebox.showinfo("Password Validation Result", validation_result)
-    
+        messagebox.showinfo("Password Validation Result", validation_result)    
     def pv(self, password):
         if len(password) < 8:
-            return "Your password must contain minimum 8 characters"
-        
+            return "Your password must contain minimum 8 characters"        
         has_alpha = False
         has_lower = False
         has_upper = False
         has_digit = False
-        has_special = False
-        
+        has_special = False        
         for char in password:
             if char.isalpha():
                 has_alpha = True
@@ -384,8 +331,7 @@ class CA:
             elif char.isdigit():
                 has_digit = True
             elif char in "@_!#$%^&*()<>?/|}{~:][":
-                has_special = True
-        
+                has_special = True        
         if not has_alpha:
             return "Your password should contain alphabets"
         elif not has_lower:
@@ -399,124 +345,98 @@ class CA:
         else:
             return "Password successful"
     
+    #function for rotating screen
     def select_screen_rotation(self):
         self.clear_frame2_2()
         self.screen_rotation = Frame(self.frame2_2, bg='#000308')
         self.screen_rotation.pack(expand=True, fill=BOTH)
-        
-        # Image for Screen Rotation
         image_rotation = Image.open('images/6.jpg')
         image_rotation = image_rotation.resize((350, 350), Image.LANCZOS)
         photo_rotation = ImageTk.PhotoImage(image_rotation)
         label_image_rotation = Label(self.screen_rotation, image=photo_rotation, bg='#000308')
         label_image_rotation.image = photo_rotation
-        label_image_rotation.pack(side=LEFT)
-        
-        # Function details for Screen Rotation
+        label_image_rotation.pack(side=LEFT)        
         label_rotations = Label(self.screen_rotation, text="Enter the number of rotations :",bg='#010409',fg='#73d6ee')
-        label_rotations.place(x=385, y=140)
-        
+        label_rotations.place(x=385, y=140)        
         self.entry_rotations = Entry(self.screen_rotation, width=15)
-        self.entry_rotations.place(x=555, y=141)
-        
+        self.entry_rotations.place(x=555, y=141)        
         button_rotate = Button(self.screen_rotation, text="Rotate Screen", command=self.rotate_screen,bg='#010409',fg='#73d6ee',bd=2)
-        button_rotate.place(x=495,y=170)
-    
+        button_rotate.place(x=495,y=170)    
     def rotate_screen(self):
         try:
             num_rotations = int(self.entry_rotations.get())
             if num_rotations <= 0:
                 raise ValueError("Number of rotations must be a positive integer.")
-            
             self.perform_screen_rotations(num_rotations)
-            messagebox.showinfo("Rotation Complete", f"Screen rotated {num_rotations} times.")
-        
+            messagebox.showinfo("Rotation Complete", f"Screen rotated {num_rotations} times.")        
         except ValueError as e:
-            messagebox.showerror("Error", str(e))
-    
+            messagebox.showerror("Error", str(e))    
     def perform_screen_rotations(self, num_rotations):
         p = rotatescreen.get_primary_display()
-        rotation_angles = [90, 180, 270, 0]
-        
+        rotation_angles = [90, 180, 270, 0]        
         for _ in range(num_rotations):
             for angle in rotation_angles:
                 p.rotate_to(angle)
                 time.sleep(0.5)
     
+    #function for website blocker    
     def select_website_blocker(self):
         self.clear_frame2_2()
         self.website_blocker = Frame(self.frame2_2, bg='#02a1fc')
         self.website_blocker.pack(expand=True, fill=BOTH)
-        
-        # Image for Website Blocker
         image_website = Image.open('images/7.jpg')
         image_website = image_website.resize((350, 350), Image.LANCZOS)
         photo_website = ImageTk.PhotoImage(image_website)
         label_image_website = Label(self.website_blocker, image=photo_website, bg='#02a1fc')
         label_image_website.image = photo_website
-        label_image_website.pack(side=LEFT)
-        
-        # Function details for Website Blocker
+        label_image_website.pack(side=LEFT) 
         label_website = Label(self.website_blocker, text="Enter website (e.g., example.com)",bg='#04a3fe',fg='#fefefe')
-        label_website.place(x=422, y=150)
-        
+        label_website.place(x=422, y=150)        
         self.entry_website = Entry(self.website_blocker, width=40)
         self.entry_website.place(x=390, y=180)
-        
         button_block = Button(self.website_blocker, text="Block Website", command=lambda: self.block_website(self.entry_website.get()),bg='#04a3fe',fg='#fefefe',bd=2)
-        button_block.place(x=420, y=210)
-        
+        button_block.place(x=420, y=210)        
         button_list = Button(self.website_blocker, text="List Blocked Websites", command=self.list_blocked_websites,bg='#04a3fe',fg='#fefefe',bd=2)
-        button_list.place(x=455,y=115)
-        
+        button_list.place(x=455,y=115)        
         button_unblock = Button(self.website_blocker, text="Unblock Website", command=lambda: self.unblock_website(self.entry_website.get()),bg='#04a3fe',fg='#fefefe',bd=2)
-        button_unblock.place(x=510, y=210)
-    
+        button_unblock.place(x=510, y=210)    
     def block_website(self, website):
         try:
             with open(hosts_file_path, 'r') as f:
-                content = f.read()
-            
+                content = f.read()            
             if any(website in line for line in content.splitlines()):
                 messagebox.showinfo("Already Blocked", f"{website} is already blocked.")
             else:
                 with open(hosts_file_path, 'a') as f:
                     f.write(f"127.0.0.1 {website}\n")
-                messagebox.showinfo("Blocked Successfully", f"{website} has been blocked successfully.")
-        
+                messagebox.showinfo("Blocked Successfully", f"{website} has been blocked successfully.")        
         except Exception as e:
-            messagebox.showerror("Error", f"Error occurred: {str(e)}")
-    
+            messagebox.showerror("Error", f"Error occurred: {str(e)}")    
     def list_blocked_websites(self):
         try:
             with open(hosts_file_path, 'r') as f:
                 content = f.readlines()
             
-            blocked_websites = [line.strip().split()[1] for line in content if line.strip().startswith('127.0.0.1')]
-            
+            blocked_websites = [line.strip().split()[1] for line in content if line.strip().startswith('127.0.0.1')]            
             if blocked_websites:
                 messagebox.showinfo("Blocked Websites", "Currently blocked websites:\n" + "\n".join(blocked_websites))
             else:
-                messagebox.showinfo("Blocked Websites", "No websites are currently blocked.")
-        
+                messagebox.showinfo("Blocked Websites", "No websites are currently blocked.")        
         except Exception as e:
-            messagebox.showerror("Error", f"Error occurred: {str(e)}")
-    
+            messagebox.showerror("Error", f"Error occurred: {str(e)}")    
     def unblock_website(self, website):
         try:
             with open(hosts_file_path, 'r') as f:
-                lines = f.readlines()
-            
+                lines = f.readlines()            
             with open(hosts_file_path, 'w') as f:
                 for line in lines:
                     if not line.strip().startswith('127.0.0.1 ' + website):
-                        f.write(line)
-            
-            messagebox.showinfo("Unblocked Successfully", f"{website} has been unblocked successfully.")
-        
+                        f.write(line)            
+            messagebox.showinfo("Unblocked Successfully", f"{website} has been unblocked successfully.")        
         except Exception as e:
             messagebox.showerror("Error", f"Error occurred: {str(e)}")
     
+    #function for clearing the frame for the new function to appear
     def clear_frame2_2(self):
         for widget in self.frame2_2.winfo_children():
             widget.destroy()
