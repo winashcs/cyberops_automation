@@ -13,7 +13,7 @@ executables = [cx_Freeze.Executable("ca.py", base=base, icon="icon.ico")]
 
 cx_Freeze.setup(
     name="CyberOps Automation",
-    options={"build_exe": {"packages": ["tkinter", "os"], "include_files": ["icon.ico", "images"]}},
+    options={"build_exe": {"packages": ["tkinter", "os"], "include_files": [(os.path.join(os.path.dirname(__file__), "record.txt"), "record.txt"),"icon.ico", "images"]}},
     version="1.0",
     description="A software for automating cybersecurity operations.",
     executables=executables
