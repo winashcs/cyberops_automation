@@ -30,11 +30,11 @@ class CA:
         self.animate()
         
         # Frame for function selection and display
-        frame2 = Frame(self.root, bd=2, relief=RIDGE, bg='white')
-        frame2.place(x=0, y=326, width=1366, height=379)
+        self.frame2 = Frame(self.root, bd=2, relief=RIDGE, bg='white')
+        self.frame2.place(x=0, y=326, width=1366, height=379)
         
         # Frame for function selection
-        frame2_1 = LabelFrame(frame2, bd=2, relief=RIDGE, bg='black')
+        frame2_1 = LabelFrame(self.frame2, bd=2, relief=RIDGE, bg='black')
         frame2_1.place(x=0, y=12, width=680, height=350)
         
         sl1=Image.open('images/logo.png')
@@ -66,7 +66,7 @@ class CA:
         frame2_1.grid_rowconfigure(0, weight=1) 
         
         # Frame for function display
-        self.frame2_2 = LabelFrame(frame2, bd=2, relief=RIDGE)
+        self.frame2_2 = LabelFrame(self.frame2, bd=2, relief=RIDGE)
         self.frame2_2.place(x=683, y=12, width=680, height=350)
         
         dl2=Image.open('images/bg.jpg')
