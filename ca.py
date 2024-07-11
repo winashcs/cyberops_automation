@@ -5,8 +5,8 @@ import string #used mainly during
 import random #encryption/decryption
 import pyperclip #for copy button funcationality
 import pyautogui #for mouse clicks
-import time 
-import rotatescreen
+import time #used mainly for random clicks
+import rotatescreen 
 
 # Define the path to the hosts file on Windows to be used for website blocking/unblocking
 hosts_file_path = r'C:/Windows/System32/drivers/etc/hosts'
