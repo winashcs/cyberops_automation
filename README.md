@@ -1,7 +1,7 @@
 # CyberOps Automation
 
 ## Introduction
-CyberOps Automation is a repository dedicated to Python-based cybersecurity project that automates various tasks crucial in the realm of digital security. In today's interconnected digital landscape, cybersecurity plays a pivotal role in safeguarding sensitive information and mitigating risks associated with cyber threats. This project is designed not only to demonstrate technical skills but also to educate users on fundamental cybersecurity concepts through hands-on exploration and practical implementation.
+CyberOps Automation is a Python-based cybersecurity project that automates various tasks crucial in the realm of digital security. In today's interconnected digital landscape, cybersecurity plays a pivotal role in safeguarding sensitive information and mitigating risks associated with cyber threats. This project is designed not only to demonstrate technical skills but also to educate users on fundamental cybersecurity concepts through hands-on exploration and practical implementation.
 
 ## Understanding CyberOps Automation
 CyberOps Automation focuses on empowering users to enhance their cybersecurity awareness and proficiency. This project addresses specific cybersecurity challenges and solutions, ranging from basic encryption techniques to more advanced malware simulations and defensive strategies like password management and website blocking. By engaging with this project, users gain practical insights into the methodologies used to secure digital assets, prevent unauthorized access, and mitigate potential cyber threats.
