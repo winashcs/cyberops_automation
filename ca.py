@@ -18,7 +18,7 @@ class CA:
         self.root.title('CyberOps Automation')
         self.root.iconbitmap('images/icon.ico')
         
-        # Title and logos
+        # Title
         title = Label(self.root, text='CyberOps Automation', font=('Lucida Handwriting', 70, 'bold'), bg='#1178bd', fg='#ffd414')
         title.place(x=0, y=0, width=1366, height=130)
         
