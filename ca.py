@@ -41,7 +41,7 @@ class CA:
         self.sl111=Label(frame2_1,image=self.sl11,bg='black')
         self.sl111.grid(row=0, column=0, padx=10, pady=5, sticky='w') 
         
-        # Label for function selection
+        # Text for function selection
         label_function = Label(frame2_1, text="Select   ▶", font=('Arial',17,'bold'), bg='black', fg='#fec101')
         label_function.grid(row=0, column=1, padx=10, pady=5, sticky='e')
         
