@@ -8,7 +8,7 @@ import pyautogui #for mouse clicks
 import time
 import rotatescreen
 
-# Define the path to the hosts file on Windows
+# Define the path to the hosts file on Windows to be used for website blocking/unblocking
 hosts_file_path = r'C:/Windows/System32/drivers/etc/hosts'
 
 class CA:
