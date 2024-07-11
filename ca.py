@@ -5,7 +5,6 @@ import string
 import random
 import pyperclip #for copy button funcationality
 import pyautogui #for mouse clicks
-import os
 import time
 import rotatescreen
 
