@@ -29,7 +29,6 @@ CyberOps Automation leverages the following technologies:
 The architecture of CyberOps Automation is designed to be modular and scalable, allowing for easy integration of user interface with functionalities. This project operates independently within its own module, ensuring clear separation of concerns and facilitating maintenance and updates. The GUI applications are built using Tkinter, providing a consistent and user-friendly interface for interacting with various cybersecurity tools and simulations.
 
 ## Detailed System Walkthrough
-
 ### Encryption and Decryption
 The encryption and decryption module utilizes a substitution cipher to transform plaintext messages into ciphertext and vice versa. Users input a message, and the application encrypts it using a randomized substitution key. Decryption reverses this process, demonstrating the fundamental principles of data confidentiality and integrity in cybersecurity.
 ### Keyloggers
