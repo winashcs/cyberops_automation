@@ -1,11 +1,11 @@
 from tkinter import * #for creating graphic user interface
 from tkinter import ttk, messagebox #(themed tk) we use ttk for modern widgets like buttons, labels, and for displaying messages
 from PIL import Image, ImageTk #helps for image processing in gui
-import string
-import random
+import string #used mainly during
+import random #encryption/decryption
 import pyperclip #for copy button funcationality
 import pyautogui #for mouse clicks
-import time
+import time 
 import rotatescreen
 
 # Define the path to the hosts file on Windows to be used for website blocking/unblocking
